@@ -54,6 +54,13 @@ public class WelcomeController
 			MAIL_PERSONAL_NAME=bundle.getString("mail.personal_name");
 			MAIL_TLS=bundle.getString("mail.TLS");*/
 		}
+	    @RequestMapping(value={"/"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	    public String getNewForm(HttpServletRequest request,HttpServletResponse response,  Model model)
+	    {
+	    	String language=request.getParameter("language");
+	    System.out.println("xxx");	
+	        return "finwiz/common";
+	    }
     @RequestMapping(value={"/template/todolist"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public String getToDoList(Model model, @RequestParam(value="pageNo", required=false) String pageNoStr)
     {
