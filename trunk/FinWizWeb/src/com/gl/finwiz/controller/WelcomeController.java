@@ -6,7 +6,6 @@
 package com.gl.finwiz.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,9 +42,9 @@ public class WelcomeController
 	  private static String MAIL_PASSWORD=""; 
 	  private static String MAIL_PERSONAL_NAME="";
 	  private static String MAIL_TLS="";
-	 private static ResourceBundle bundle;
+	 // private static ResourceBundle bundle;
 		static{
-			bundle =  ResourceBundle.getBundle( "config" );		
+		/*	bundle =  ResourceBundle.getBundle( "config" );		
 			MAIL_SERVER=bundle.getString("mail.host");
 			MAIL_PROTOCAL=bundle.getString("mail.protocal");
 			MAIL_USE_AUTHEN=bundle.getString("mail.useAuthen");
@@ -53,7 +52,7 @@ public class WelcomeController
 			MAIL_EMAIL=bundle.getString("mail.email");
 			MAIL_PASSWORD=bundle.getString("mail.password");
 			MAIL_PERSONAL_NAME=bundle.getString("mail.personal_name");
-			MAIL_TLS=bundle.getString("mail.TLS");
+			MAIL_TLS=bundle.getString("mail.TLS");*/
 		}
     @RequestMapping(value={"/template/todolist"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public String getToDoList(Model model, @RequestParam(value="pageNo", required=false) String pageNoStr)
