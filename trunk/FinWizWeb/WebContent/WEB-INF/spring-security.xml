@@ -24,7 +24,7 @@
 		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/> 
 		<intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
-	    <intercept-url pattern="/exam/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/finwiz/**" access="isAuthenticated()" />
 	    
 	    <intercept-url pattern="/reportmanagement/**" access="isAuthenticated()" />	    
 	    <intercept-url pattern="/survey/**" access="isAuthenticated()" />
