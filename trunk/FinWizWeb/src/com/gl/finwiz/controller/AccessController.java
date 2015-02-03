@@ -38,6 +38,7 @@ public class AccessController {
          localeResolver.setLocale(request, response,
              (Locale) localeEditor.getValue());
     	}
+    	System.out.println("login");
 		return "access/login";
 	}
 	
@@ -83,7 +84,7 @@ public class AccessController {
  	public String loginFailure(Model model,HttpServletRequest request,HttpServletResponse response) { 
 		String message = "Invalid User or Password.";
 		if(!LocaleContextHolder.getLocale().getDisplayLanguage().equals("English"))
-			message="ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถู�?ต้อง.";
+			message="ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถู�?ต้อง.";
 		String language=request.getParameter("language");
 		
 		if(language!=null && language.length()>0){
