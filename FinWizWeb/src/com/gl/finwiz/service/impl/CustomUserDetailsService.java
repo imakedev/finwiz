@@ -6,14 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,13 +16,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gl.finwiz.domain.MyUser;
-import com.gl.finwiz.domain.MyUserDetails;
-import com.gl.finwiz.domain.User;
-import com.gl.finwiz.repository.UserRepository;
-import com.gl.finwiz.service.FinwizService;
-
 import th.co.aoe.makedev.missconsult.constant.ServiceConstant;
+
+import com.gl.finwiz.domain.User;
+import com.gl.finwiz.service.FinwizService;
 
 
 /**
@@ -41,14 +30,15 @@ import th.co.aoe.makedev.missconsult.constant.ServiceConstant;
 @Transactional(readOnly = true)
 public class CustomUserDetailsService implements UserDetailsService {
 	private static final Logger logger = Logger.getLogger(ServiceConstant.LOG_APPENDER);
-	@Autowired
+	/* @Autowired
 	private UserRepository userRepository;
+	*/
 	@Autowired
 	private FinwizService finwizService;
 	/*@PersistenceContext
 	private EntityManager em;*/
-	@PersistenceUnit(unitName = "hibernatePersistenceUnit")
-    private EntityManagerFactory entityManagerFactory;
+	//@PersistenceUnit(unitName = "hibernatePersistenceUnit")
+    //private EntityManagerFactory entityManagerFactory;
 
 	/**
 	 * Returns a populated {@link UserDetails} object. 
@@ -58,7 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		logger.debug(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx into loadUserByUsername "+username);
 		try {
-	      User domainUserContact = userRepository.findByUsername(username);
+	      User domainUserContact = null;// userRepository.findByUsername(username);
 			logger.debug(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx affter loadUserByUsername "+domainUserContact);
 			
 			boolean enabled = true;
@@ -69,6 +59,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			  boolean isAdmin=false;
 			  Long rcId=null;
 		if(domainUserContact!=null){
+			/*
 			//logger.debug("  getMcontactName "+domainUser.getMissContact().getMcontactName());
 			EntityManager em = entityManagerFactory.createEntityManager();
             try{
@@ -81,17 +72,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		        query.where(cb.equal(contact.get("mcontactUsername").as(String.class),
 		        		username));
-		     /*  th.co.imake.missconsult.assessment.domain.MissContact domainContact =null;
-		      List<th.co.imake.missconsult.assessment.domain.MissContact> domainContacts= em.createQuery(query).getResultList();
-		       if(domainContacts!=null && domainContacts.size()>0){
-		    	   domainContact=domainContacts.get(0);
-		    	   logger.debug("  getMcontactName "+domainContact.getMcontactName());
-		    	   if(domainContact.getMcontactIsAdmin()!=null && domainContact.getMcontactIsAdmin().equals("1"))
-		    		   isAdmin=true;
-		    	   rcId=domainContact.getRcId();
-		    	   //domainUserContact.getRoleContact();
-		       }
-		       */
+		    
 		       tx.commit();
             }catch (Exception e) {
 				// TODO: handle exception
@@ -115,6 +96,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 			myUser.setMissContact(missContact);
 			user.setMyUser(myUser);
 		return user;
+		*/
+			return null;
 		}else
 			return null;
 					
