@@ -58,8 +58,22 @@ public class WelcomeController
 	    public String getNewForm(HttpServletRequest request,HttpServletResponse response,  Model model)
 	    {
 	    	String language=request.getParameter("language");
-	    System.out.println("xxx");	
-	        return "finwiz/common";
+	        System.out.println("xxx");	
+	        return "finwiz/index";
+	    }
+	    @RequestMapping(value={"/los_checker_inbox"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	    public String getLos01Form(HttpServletRequest request,HttpServletResponse response,  Model model)
+	    {
+	    	
+	        System.out.println("los_checker_inbox");	
+	        return "finwiz/los/los_checker_inbox";
+	    }
+	    @RequestMapping(value={"/los_checker_input"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	    public String getLos02Form(HttpServletRequest request,HttpServletResponse response,  Model model)
+	    {
+	    	
+	        System.out.println("los_checker_input");	
+	        return "finwiz/los/los_checker_input";
 	    }
     @RequestMapping(value={"/template/todolist"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public String getToDoList(Model model, @RequestParam(value="pageNo", required=false) String pageNoStr)
