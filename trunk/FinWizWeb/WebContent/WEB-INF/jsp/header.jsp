@@ -38,8 +38,11 @@
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.10.4.custom.min.js" />"></script>
 	<!-- DateTimePicker Plugin -->
 	<script src="<c:url value="/resources/js/jquery.datetimepicker.js" />"></script>
-   
-   <link href="<c:url value="/resources/css/grid.css" />" rel="stylesheet" type="text/css" />
+    
+    <link href="<c:url value="/resources/css/grid.css" />" rel="stylesheet" type="text/css" />
+    
+    <script src="<c:url value="/resources/js/tabs/tabs.js" />"></script>
+    <link href="<c:url value="/resources/js/tabs/tabs.css" />" rel="stylesheet" type="text/css" media="screen" />
    
     <script type="text/javascript">
       $(document).ready(function() {
