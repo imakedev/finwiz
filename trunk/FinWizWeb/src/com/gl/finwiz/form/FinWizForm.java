@@ -7,7 +7,6 @@ package com.gl.finwiz.form;
 
 import java.io.Serializable;
 
-import th.co.aoe.makedev.missconsult.xstream.MissCandidate;
 
 // Referenced classes of package th.co.aoe.makedev.missconsult.exam.form:
 //            CommonForm
@@ -18,10 +17,10 @@ public class FinWizForm extends CommonForm
 
     public FinWizForm()
     {
-        missCandidate = new MissCandidate();
+      //  missCandidate = new MissCandidate();
     }
 
-    public MissCandidate getMissCandidate()
+  /*  public MissCandidate getMissCandidate()
     {
         return missCandidate;
     }
@@ -29,7 +28,7 @@ public class FinWizForm extends CommonForm
     public void setMissCandidate(MissCandidate missCandidate)
     {
         this.missCandidate = missCandidate;
-    }
+    }*/
 
     public String getMcaStatus()
     {
@@ -110,7 +109,7 @@ public class FinWizForm extends CommonForm
 	}
 
 	private static final long serialVersionUID = 1L;
-    private MissCandidate missCandidate;
+    //private MissCandidate missCandidate;
     private String mcaBirthDate;
     private String mcaStatus;
     private String mcaSeries;

@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import th.co.aoe.makedev.missconsult.xstream.MissSystemUse;
-import th.co.aoe.makedev.missconsult.xstream.MissTestResult;
-
 import com.gl.finwiz.service.FinwizService;
 
 @Controller
@@ -48,9 +45,9 @@ public class AccessController {
 	}
 	@RequestMapping(value = "/checking")
    public String checking(Model model,HttpServletRequest request) {
-		MissTestResult missTest=new MissTestResult();
+	//	MissTestResult missTest=new MissTestResult();
 		String userid=SecurityContextHolder.getContext().getAuthentication().getName();
-		missTest.setUserid(userid);
+		//missTest.setUserid(userid);
 		int result=0;//finwizService.checkMissTestResult(missTest);
 		String	useragent = request.getHeader("User-Agent");
 		String user = useragent.toLowerCase();
@@ -66,12 +63,12 @@ public class AccessController {
 		} else if(user.indexOf("msie") != -1) {
 			band="IE";
 		}  
-		 MissSystemUse missSystemUse=new MissSystemUse(); 
+		/* MissSystemUse missSystemUse=new MissSystemUse(); 
 			missSystemUse.setMsystemType(1L);
 			missSystemUse.setMsystemUserId(userid); 
 			missSystemUse.setMsystemBrowserBand(band);
 			missSystemUse.setMsystemBrowserVersion(getVersionBrowser(band,user)); 
-			missSystemUse.setMsystemBrowserFullVersion(useragent); 
+			missSystemUse.setMsystemBrowserFullVersion(useragent); */
 			//finwizService.saveMissSystemUse(missSystemUse);
 		if(result==1){ 
 			model.addAttribute("message", "You test finish"); 

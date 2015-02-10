@@ -1,10 +1,7 @@
 package com.gl.finwiz.service.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import th.co.aoe.makedev.missconsult.constant.ServiceConstant;
-
+import com.gl.finwiz.core.constant.ServiceConstant;
 import com.gl.finwiz.domain.User;
 import com.gl.finwiz.service.FinwizService;
 
@@ -107,8 +103,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throw new RuntimeException(e);
 		}
 	}
-//	public  Set<th.co.aoe.makedev.missconsult.xstream.RoleType> getRolesMapping(RoleContact roleContact,boolean isAdmin){
-	public  Set<th.co.aoe.makedev.missconsult.xstream.RoleType> getRolesMapping(Long rcId,boolean isAdmin){
+/*	public  Set<th.co.aoe.makedev.missconsult.xstream.RoleType> getRolesMapping(Long rcId,boolean isAdmin){
 		  Set<th.co.aoe.makedev.missconsult.xstream.RoleType> role =new HashSet<th.co.aoe.makedev.missconsult.xstream.RoleType>();
 		th.co.aoe.makedev.missconsult.xstream.RoleType defualt= new th.co.aoe.makedev.missconsult.xstream.RoleType();
 		   defualt.setRole("ROLE_USER");
@@ -135,7 +130,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         	 
            }
 		return role;
-	}
+	}*/
 	/**
 	 * Retrieves a collection of {@link GrantedAuthority} based on a numerical role
 	 * @param role the numerical role
@@ -145,10 +140,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 		List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));
 		return authList;
 	}*/
-	public Collection<? extends GrantedAuthority> getAuthorities(Set<th.co.aoe.makedev.missconsult.xstream.RoleType> role) {
+/*	public Collection<? extends GrantedAuthority> getAuthorities(Set<th.co.aoe.makedev.missconsult.xstream.RoleType> role) {
 		List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));
 		return authList;
-	}
+	}*/
 	
 	/**
 	 * Converts a numerical role to an equivalent list of roles
@@ -163,7 +158,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		return roles;
 	}*/
-	public List<String> getRoles(Set<th.co.aoe.makedev.missconsult.xstream.RoleType> role) {
+	/*public List<String> getRoles(Set<th.co.aoe.makedev.missconsult.xstream.RoleType> role) {
 		List<String> roles = new ArrayList<String>();
 		if(role!=null && role.size()>0)
 		for (th.co.aoe.makedev.missconsult.xstream.RoleType key : role) {
@@ -171,7 +166,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		return roles;
 	}
-	
+	*/
 	/**
 	 * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
 	 * @param roles {@link String} of roles

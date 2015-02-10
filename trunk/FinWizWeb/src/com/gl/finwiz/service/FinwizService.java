@@ -5,6 +5,8 @@
 
 package com.gl.finwiz.service;
 
+import com.gl.finwiz.core.model.UserLoginM;
+
 
 
 public interface FinwizService {
@@ -13,5 +15,7 @@ public interface FinwizService {
 	public abstract int startMissTestResult(MissTestResult missTestResult); 
 	public abstract int processMissTestResult(MissTestResult missTestResult);
 	public abstract int saveOrUpdateMissTodo(MissTodo missTodo);
-	 */	
+	 */
+	public abstract UserLoginM login(UserLoginM userLoginM);
+	
 }

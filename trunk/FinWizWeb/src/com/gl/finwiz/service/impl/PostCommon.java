@@ -12,10 +12,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import th.co.aoe.makedev.missconsult.xstream.common.Pagging;
-import th.co.aoe.makedev.missconsult.xstream.common.VResultMessage;
-import th.co.aoe.makedev.missconsult.xstream.common.VServiceXML;
-
+import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
+import com.gl.finwiz.core.xstream.common.FinWizXML;
+import com.gl.finwiz.core.xstream.common.Paging;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 /*import th.co.vlink.utils.Pagging;
@@ -25,10 +24,11 @@ import th.co.vlink.xstream.common.VServiceXML;
  
 public class PostCommon {
 	public static final int PAGE_SIZE = 5; 
-	public VResultMessage postMessage(VServiceXML vserviceXML,@SuppressWarnings("rawtypes") Class[] className,String endPoint,boolean isReturn) {
+	public FinWizResultMessage postMessage(FinWizXML vserviceXML,@SuppressWarnings("rawtypes") Class[] className,String endPoint,boolean isReturn) {
 		//HttpPost httppost = new HttpPost(ServiceConstant.hostReference+endPoint); 
 		//HttpPost httppost = new HttpPost("http://localhost:3003/v1/"+endPoint);
-		HttpPost httppost = new HttpPost("http://localhost:3000/v1/"+endPoint);
+		HttpPost httppost = new HttpPost("http://192.168.1.199:3000/v1/"+endPoint);
+		// HttpPost httppost = new HttpPost("http://localhost:3000/v1/"+endPoint);
 		//HttpPost httppost = new HttpPost("http://localhost:8080/MISSExamServices/rest/"+endPoint);
 				
 				//HttpPost httppost = new HttpPost("http://10.0.20.27:3000/v1/"+endPoint);
@@ -45,14 +45,14 @@ public class PostCommon {
 				}*/
 				xstream.processAnnotations(className);
 				int startIndex = 0;
-				if(vserviceXML.getPagging()==null){
-					Pagging p = new Pagging();
+				if(vserviceXML.getPaging()==null){
+					Paging p = new Paging();
 					p.setPageNo(1);
 					p.setPageSize(PAGE_SIZE);
 					vserviceXML.setPagging(p);
 				}
-				startIndex = vserviceXML.getPagging().getPageNo()==1?0:(vserviceXML.getPagging().getPageNo()-1)*vserviceXML.getPagging().getPageSize();
-				vserviceXML.getPagging().setStartIndex(startIndex);
+				startIndex = vserviceXML.getPaging().getPageNo()==1?0:(vserviceXML.getPaging().getPageNo()-1)*vserviceXML.getPaging().getPageSize();
+				vserviceXML.getPaging().setStartIndex(startIndex);
 				String xString = xstream.toXML(vserviceXML);
 				ByteArrayEntity entity = null;
 				try {
@@ -72,24 +72,24 @@ public class PostCommon {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				VResultMessage  vresultMessage = null; 
+				FinWizResultMessage  vresultMessage = null; 
 				InputStream in = null;
 			if (isReturn) {
 			 if (resEntity != null) {
 			
 					try {
 						in = resEntity.getContent();
-						xstream.processAnnotations(VResultMessage.class); 
+						xstream.processAnnotations(FinWizResultMessage.class); 
 						Object obj = xstream.fromXML(in);
 						if(obj!=null){
-							vresultMessage = (VResultMessage)obj; 
+							vresultMessage = (FinWizResultMessage)obj; 
 							 
 							int maxRow = 0;
 							if(vresultMessage.getMaxRow()!=null && vresultMessage.getMaxRow().length()!=0)
 								maxRow = Integer.parseInt(vresultMessage.getMaxRow());
 							int pageSize = 0;
-							if(vserviceXML.getPagging()!=null )
-								pageSize = vserviceXML.getPagging().getPageSize();				
+							if(vserviceXML.getPaging()!=null )
+								pageSize = vserviceXML.getPaging().getPageSize();				
 							int lastpage = (maxRow/pageSize)+((maxRow%pageSize)==0?0:1);
 							vresultMessage.setLastpage(lastpage+"");
 						}
@@ -110,7 +110,7 @@ public class PostCommon {
 				httpclient.getConnectionManager().shutdown();
 				return    vresultMessage ;
 	}
-	public VResultMessage postMessage(VServiceXML vserviceXML,String className,String endPoint,boolean isReturn) {
+	public FinWizResultMessage postMessage(FinWizXML vserviceXML,String className,String endPoint,boolean isReturn) {
 		@SuppressWarnings("rawtypes")
 		Class c  = null;
 		try {
