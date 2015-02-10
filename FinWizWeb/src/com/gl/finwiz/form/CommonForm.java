@@ -6,7 +6,8 @@
 package com.gl.finwiz.form;
 
 import java.io.Serializable;
-import th.co.aoe.makedev.missconsult.xstream.common.Pagging;
+
+import com.gl.finwiz.core.xstream.common.Paging;
 
 public class CommonForm
     implements Serializable
@@ -14,7 +15,7 @@ public class CommonForm
 
     public CommonForm()
     {
-        paging = new Pagging();
+        paging = new Paging();
     }
 
     public int getPageCount()
@@ -27,12 +28,12 @@ public class CommonForm
         this.pageCount = pageCount;
     }
 
-    public Pagging getPaging()
+    public Paging getPaging()
     {
         return paging;
     }
 
-    public void setPaging(Pagging paging)
+    public void setPaging(Paging paging)
     {
         this.paging = paging;
     }
@@ -49,6 +50,6 @@ public class CommonForm
 
     private static final long serialVersionUID = 1L;
     private String mode;
-    private Pagging paging;
+    private Paging paging;
     private int pageCount;
 }

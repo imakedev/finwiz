@@ -21,12 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import th.co.aoe.makedev.missconsult.xstream.MissAccount;
-import th.co.aoe.makedev.missconsult.xstream.MissContact;
-import th.co.aoe.makedev.missconsult.xstream.MissTodo;
-import th.co.aoe.makedev.missconsult.xstream.common.Pagging;
-import th.co.aoe.makedev.missconsult.xstream.common.VResultMessage;
-
+import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
+import com.gl.finwiz.core.xstream.common.Paging;
 import com.gl.finwiz.service.FinwizService;
 
 @Controller 
@@ -85,10 +81,10 @@ public class WelcomeController
         int pageNo = 1;
         if(pageNoStr != null && pageNoStr.length()!=0)
             pageNo = Integer.parseInt(pageNoStr);
-        Pagging page = new Pagging();
+        Paging page = new Paging();
         page.setPageNo(pageNo);
         page.setPageSize(PAGE_SIZE);
-        MissTodo missTodo = new MissTodo();
+      /*  MissTodo missTodo = new MissTodo();
         missTodo.setPagging(page);
         if(model.containsAttribute("UserMissContact")){
         	MissContact missContact= (MissContact)model.asMap().get("UserMissContact");
@@ -98,8 +94,8 @@ public class WelcomeController
         		 missTodo.setMissAccount(missAccount);
         		 //candidateForm.getMissCandidate().setMissAccount(missAccount);
         	}
-        }
-        VResultMessage vresult =null;// finwizService.searchMissTodo(missTodo);
+        }*/
+        FinWizResultMessage vresult =null;// finwizService.searchMissTodo(missTodo);
         model.addAttribute("todolists", vresult.getResultListObj());
         model.addAttribute("totals", vresult.getMaxRow());
         model.addAttribute("pageObj", page);
@@ -112,14 +108,14 @@ public class WelcomeController
     		, @PathVariable int pageNo,Model model)
     {
     	 
-    	   Pagging page = new Pagging();
-    	   MissTodo misstodo =new MissTodo();
+    	   Paging page = new Paging();
+    	//   MissTodo misstodo =new MissTodo();
     	   page.setPageSize(PAGE_SIZE);
     	   page.setPageNo(pageNo);
-    	   misstodo.setPagging(page);
+    	 //  misstodo.setPagging(page);
          
      
-    	   VResultMessage vresult =null;// finwizService.searchMissTodo(misstodo);    
+    	   FinWizResultMessage vresult =null;// finwizService.searchMissTodo(misstodo);    
            model.addAttribute("todolists", vresult.getResultListObj());
            model.addAttribute("totals", vresult.getMaxRow());
          //  model.addAttribute("UserMissContact", missContact);
