@@ -1,5 +1,16 @@
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
+<style type="text/css">
 
+</style>
+<script type="text/javascript">
+$(function() {
+	$( "#tabs" ).tabs();
+	});
+function cancelButton(){
+
+	window.open('los_checker_inbox','_self')
+}
+</script>
 <div id="body-wrapper" class="clearfix">
 	<%@ include file="/WEB-INF/jsp/sidebar.jsp" %>
 	
@@ -17,7 +28,7 @@
       <div class="content-box-content">
         <div class="pull-right">
           <p>&nbsp;
-            <input type="button" value="CANCEL" class="btn btn-default">
+            <input type="button" value="CANCEL" class="btn btn-default" onclick="cancelButton();">
             <input type="button" value="SAVE AS DRAFT" class="btn btn-warning" id="savedraft2" onClick="$('#displayJobStatus').html($('#userdraft').val()+' Draft');">
             <input type="button"  value="Submit to Input Data" class="greenbtn" onClick="if(confirm('Submit to Input Data')=='yes'){               window.location.href = 'los01.php'}; ">
          </p>
@@ -71,9 +82,52 @@
 			<div class="div_row2">
 			   <input type="text" readonly>
 			</div>
-      </div>
-</div>
+      </div><br><br><br>
+	<div id="tabs">
+		<ul>
+		<li><a href="#tabs-1">Loan request</a></li>
+		<li><a href="#tabs-2">Customer Information</a></li>
+		</ul>
+		<div id="tabs-1">
+		<div class="div_row1">
+			<span class="red">*</span> DOB: 
+			</div>
+			<div class="div_row2">
+			   <input name="dob" type="text" class="datepicker" id="dob" readonly>
+			</div><br><br><br>
+            <div class="div_row1">
+			<span class="red">*</span> Nationality: 
+			</div>
+			<div class="div_row2">
+			   <select class="textinput" name="nationality" id="nationality">
+                          <option>Afghan</option>
+                          <option>Albanian</option>
+                          <option>Algerian</option>
+                          <option>American</option>
+                          <option>Andorran</option>
+                          <option>Angolan</option>
+                          <option>Antiguans</option>
+                          <option>Argentinean</option>
+                          <option>Armenian</option>
+                          <option>Australian</option>
+                        </select>
+			</div><br><br><br>
+		</div>
+		<div id="tabs-2">
+		<div class="div_row1">
+			<span class="red">*</span> DOB: 
+			</div>
+			<div class="div_row2">
+			   <input name="dob" type="text" class="datepicker" id="dob" readonly>
+			</div><br><br><br>
 		</div>
 	</div>
+</div>
+
+
+		</div>
+		
+	</div>
+	
 </div>
 	<%@ include file="/WEB-INF/jsp/footer.jsp" %>
