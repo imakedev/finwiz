@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,8 @@ import com.gl.finwiz.service.FinwizService;
 @SessionAttributes(value={"UserMissContact","welcomeForm"})
 public class WelcomeController
 {
+	@Autowired
+	private ApplicationContext ctx;
 	private static int PAGE_SIZE=20;
 	 private static String MAIL_SERVER = "";
 	  private static String MAIL_PROTOCAL = "";
@@ -53,6 +57,10 @@ public class WelcomeController
 	    @RequestMapping(value={"/"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	    public String getNewForm(HttpServletRequest request,HttpServletResponse response,  Model model)
 	    {
+	    	 System.out.println(ctx);	
+	    	 FinwizService finwizService = (FinwizService) ctx
+	 				.getBean("losService");
+	    	 System.out.println(finwizService);	
 	    	String language=request.getParameter("language");
 	        System.out.println("xxx");	
 	        return "finwiz/index";
@@ -154,6 +162,7 @@ public class WelcomeController
     private static SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
   
     @Autowired
+    @Qualifier("finwizService")
     private FinwizService finwizService;
 
 }
