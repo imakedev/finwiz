@@ -1,0 +1,155 @@
+        div#tablecontainer
+        {
+            width: 100%;
+        }
+
+        div.tablecontainerrow
+        {
+            clear:both;
+        }
+
+        div#tablecontainer div div.column1
+        {
+            width: 10%;
+            float:left;
+            border: 0px solid black;
+            background-color:#fff;            
+        }
+
+        div#tablecontainer div div.column2
+        {
+            width: 45%;
+            float:left;
+            border: 0px solid black;
+            background-color:#fff;            
+        }
+
+        div#tablecontainer div div.column3
+        {
+            width: 44%;
+            float:left;
+            border: 0px solid black;
+            background-color:#fff;            
+			text-align: right;
+        }
+        
+        div#tablecontainer div div.column3-colspan
+        {
+            width: 44%;
+            float:left;
+            border: 0px solid black;
+            background-color:#fff;            
+			text-align: right;
+			position: absolute;
+			top: 10;
+  			right: 10;
+        }
+
+		div#tablecontainer div div.subcolumn3-1
+        {
+            width: 25%;
+            float:left;
+            border: 0px solid black;
+            background-color:#fff; 
+			text-align: left;
+        }
+
+		div#tablecontainer div div.subcolumn3-2
+        {
+            width: 40%;
+            float:left;
+            border: 0px solid black;
+            background-color:#fff; 
+			text-align: left;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        div#tablecontainer-tabs
+        {
+            width: 100%;
+        }
+
+        div.tablecontainerrow-tabs
+        {
+            clear:both;
+        }
+        
+        div#tablecontainer-tabs div div.column-tabsA
+        {
+            width: 100%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+        
+         div#tablecontainer-tabs div div.column-tabsB
+        {
+            width: 100%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+
+        div#tablecontainer-tabs div div.column-tabs1
+        {
+            width: 45%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+
+        div#tablecontainer-tabs div div.column-tabs2
+        {
+            width: 15%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+        
+        div#tablecontainer-tabs div div.column-tabs3
+        {
+            width: 35%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+        
+        div#tablecontainer-tabs div div.column-tabs1-1
+        {
+            width: 45%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+
+        div#tablecontainer-tabs div div.column-tabs2-2
+        {
+            width: 15%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
+        
+        div#tablecontainer-tabs div div.column-tabs3-3
+        {
+            width: 35%;
+            float:left;
+            border: 1px solid black;
+            background-color:#fff;            
+        }
