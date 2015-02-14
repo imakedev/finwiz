@@ -21,7 +21,19 @@
 	 For example @Controller and @Service. Make sure to set the correct base-package -->
 	<!--  <context:component-scan base-package="th.co.aoe.makedev.missconsult.exam" />  -->
 	<context:component-scan base-package="com.gl.finwiz" />
+<!-- enable annotation  -->
+<!--  
+<context:component-scan base-package="com.gl.finwiz.controller">
+	<context:include-filter type="annotation"
+		expression="org.springframework.stereotype.Controller" />
+</context:component-scan>
 
+<context:component-scan
+	base-package="com.gl.finwiz.service">
+	<context:include-filter type="annotation"
+		expression="org.springframework.stereotype.Service" />
+</context:component-scan>
+ -->
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven /> 
