@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserRepository userRepository;
 	*/
 	@Autowired
+	@Qualifier("finWizServiceimpl")
 	private FinwizService finwizService;
 	/*@PersistenceContext
 	private EntityManager em;*/
