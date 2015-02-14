@@ -12,8 +12,8 @@ public class ParamSubForm implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	private ParamSubFormPK id;
-	@Column(name="PAGE_ID")
-	private String pageId;
+/*	@Column(name="PAGE_ID")
+	private String pageId;*/
 	@Column(name="FORM_PATH")
 	private String formPath;
 
