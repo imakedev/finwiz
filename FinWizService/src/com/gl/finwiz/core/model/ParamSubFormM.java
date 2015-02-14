@@ -2,9 +2,10 @@ package com.gl.finwiz.core.model;
 
 import java.io.Serializable;
 
+import com.gl.finwiz.core.xstream.common.FinWizXML;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("paramPageM")
-public class ParamSubFormM implements Serializable {
+public class ParamSubFormM extends FinWizXML implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String paramSubFormId;
 
