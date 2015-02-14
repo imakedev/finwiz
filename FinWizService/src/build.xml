@@ -1,0 +1,18 @@
+<project>
+
+ 
+	<target name="jar_finwiz_share">
+		<jar destfile="../target/FinWizShare.jar">
+			<!-- MISSExamServices/build/classes -->
+			<!-- common -->			  
+			<fileset dir="../build/classes" includes="com/gl/finwiz/core/constant/*.class" />
+			<!-- 
+			<fileset dir="../build/classes" includes="th/co/vlink/criteria/*.class" />
+			<fileset dir="../build/classes" includes="th/co/vlink/utils/*.class" />
+			<fileset dir="../build/classes" includes="th/co/vlink/utils/properties/*.class" />
+			-->
+			<fileset dir="../build/classes" includes="com/gl/finwiz/core/model/*.class" />
+			<fileset dir="../build/classes" includes="com/gl/finwiz/core/xstream/common/*.class" />			 
+		</jar>
+	</target> 
+</project>
