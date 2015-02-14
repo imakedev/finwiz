@@ -22,8 +22,8 @@ import com.gl.finwiz.service.FinwizService;
 @Controller
 @RequestMapping
 public class AccessController {
-	@Autowired
-	@Qualifier("finwizService")
+	@Autowired(required=true)
+	@Qualifier("finWizServiceimpl")
 	private FinwizService finwizService;
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,HttpServletResponse response,Model model, @RequestParam(required=false) String message) {

@@ -5,8 +5,6 @@
 
 package com.gl.finwiz.controller;
 
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -69,7 +67,8 @@ public class WelcomeController
 	    public String getLos01Form(HttpServletRequest request,HttpServletResponse response,  Model model)
 	    {
 	    	
-	        System.out.println("los_checker_inbox");	
+	        System.out.println("los_checker_inbox");
+	        model.addAttribute("haveTab", true);
 	        return "finwiz/los/los_checker_inbox";
 	    }
 	    @RequestMapping(value={"/los_checker_input"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
@@ -159,10 +158,10 @@ public class WelcomeController
 		return userid;
     }
   
-    private static SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+   // private static SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
   
     @Autowired
-    @Qualifier("finwizService")
+    @Qualifier("finWizServiceimpl")
     private FinwizService finwizService;
 
 }
