@@ -1,12 +1,14 @@
 package com.gl.finwiz.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.gl.finwiz.core.constant.RouterConStant;
 import com.gl.finwiz.core.constant.ServiceConstant;
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 import com.gl.finwiz.service.FinwizService;
 
-
+@Service("finWizServiceimpl")
 public class FinWizServiceImpl extends PostCommon
     implements FinwizService
 {
