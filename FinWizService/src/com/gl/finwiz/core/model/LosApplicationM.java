@@ -3,12 +3,14 @@ package com.gl.finwiz.core.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.gl.finwiz.core.xstream.common.FinWizXML;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 
 @XStreamAlias("losApplicationM")
-public class LosApplicationM implements Serializable {
+public class LosApplicationM  extends FinWizXML implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 
 	
 	private String losAppId;
