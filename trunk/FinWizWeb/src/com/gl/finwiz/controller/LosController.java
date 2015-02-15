@@ -1,8 +1,5 @@
 package com.gl.finwiz.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,9 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gl.finwiz.core.model.UserLoginM;
-import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
-import com.gl.finwiz.model.ParamPages;
 import com.gl.finwiz.service.FinwizService;
 
 @Controller
