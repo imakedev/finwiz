@@ -20,7 +20,18 @@
 							bean="loadFormResource" />
 					</bean>
 				</entry>
-				
+			    <entry key="/los">
+					<bean class="org.restlet.ext.spring.SpringFinder">
+						<lookup-method name="create"
+							bean="losResource" />
+					</bean>
+				</entry>	
+				<entry key="/cache">
+					<bean class="org.restlet.ext.spring.SpringFinder">
+						<lookup-method name="create"
+							bean="cacheResource" />
+					</bean>
+				</entry>	
 			</map>
 		</property>
 		<!--<property name="routes[2].template.variables[URI]">

@@ -27,5 +27,24 @@ public class ServiceConstant {
 	
 	
 	public static final String LOAD_FORM = "loadForm";	
+	public static final String SAVE_APPLICATION = "saveApplication";
+	
+	// LOS
+	public static final String LOS_APPLICATION_SEARCH = "SearchLosApplication";
+	public static final String LOS_APPLICATION_SAVE= "saveLosApplication";	
+	public static final String LOS_APPLICATION_SAVE_VERSION= "saveLosApplicationVersion";	
+	public static final String LOS_APPLICATION_UPDATE = "updateLosApplication";
+	public static final String LOS_APPLICATION_ITEMS_DELETE = "deleteLosApplicationItems";
+	public static final String LOS_APPLICATION_DELETE = "deleteLosApplication";
 		
+	// CacheUtil
+	public static final String CACHE_REFRESH = "cacheRefresh";
+	public static final String CACHE_REFRESH_ALL= "cacheRefreshAll";
+	public static final String CACHE_GET = "cacheGet";
+	public static final String CACHE_SIZE = "cacheSize";
+	
+	// WorkFlow
+	public static final String TODOLIST_GET= "getTodoList";
+	public static final String TODOLIST_SAVE= "saveTodoList";
+	
 }

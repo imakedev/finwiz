@@ -1,4 +1,4 @@
-package com.gl.finwiz.core.rest.resource;
+package com.gl.finwiz.core.los.rest.resource;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,19 +12,19 @@ import org.restlet.resource.ResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gl.finwiz.core.constant.ServiceConstant;
-import com.gl.finwiz.core.model.ParamPageM;
-import com.gl.finwiz.core.service.LoadFormExecutor;
+import com.gl.finwiz.core.los.model.LosApplicationM;
+import com.gl.finwiz.core.los.service.LosExecutor;
+import com.gl.finwiz.core.rest.resource.BaseResource;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 
-
-public class LoadFormResource extends BaseResource {
+public class LosResource extends BaseResource {
 	private static final Logger logger = Logger.getLogger(ServiceConstant.LOG_APPENDER);  
 	@Autowired
-	private LoadFormExecutor loadFormExecutor;
+	private LosExecutor losExecutor;
 	private com.thoughtworks.xstream.XStream xstream; 
-	public LoadFormResource() {
+	public LosResource() {
 		super();
-		logger.debug("into constructor LoadFormResource");
+		logger.debug("into constructor LosResource");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -45,11 +45,11 @@ public class LoadFormResource extends BaseResource {
 		InputStream in = null;
 		try {
 			in = entity.getStream();
-			xstream.processAnnotations(ParamPageM.class);// or xstream.autodetectAnnotations(true); (Auto-detect  Annotations)
-			ParamPageM xbpsTerm = new ParamPageM();
+			xstream.processAnnotations(LosApplicationM.class);// or xstream.autodetectAnnotations(true); (Auto-detect  Annotations)
+			LosApplicationM xbpsTerm = new LosApplicationM();
 			Object ntcCalendarObj = xstream.fromXML(in);
 			if (ntcCalendarObj != null) {
-				xbpsTerm = (ParamPageM) ntcCalendarObj;
+				xbpsTerm = (LosApplicationM) ntcCalendarObj;
 				if (xbpsTerm != null) { 
 					if (xbpsTerm.getServiceName() != null
 							&& xbpsTerm.getServiceName().length()!=0) {
@@ -57,11 +57,25 @@ public class LoadFormResource extends BaseResource {
 								+ xbpsTerm.getServiceName());
 						String serviceName = xbpsTerm.getServiceName();
 						
-						if(serviceName.equals(ServiceConstant.LOAD_FORM)){
+						if(serviceName.equals(ServiceConstant.LOS_APPLICATION_SAVE)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
-							xbpsTerm= loadFormExecutor.loadPage(xbpsTerm);
+							Long mqId= losExecutor.saveLosApplication(xbpsTerm);
+							int updateRecord=mqId.intValue(); 
+							//xbpsTerm.setMqId(mqId);
 							  if(xbpsTerm!=null){
-									List<ParamPageM> xntcCalendars = new ArrayList<ParamPageM>(1);
+									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
+									xbpsTerm.setPagging(null);							 
+									xntcCalendars.add(xbpsTerm);
+									vresultMessage.setResultListObj(xntcCalendars);
+								}
+								return getRepresentation(entity, vresultMessage, xstream);
+					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_SAVE_VERSION)){
+							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							Long mqId= losExecutor.saveLosApplication(xbpsTerm);
+							int updateRecord=mqId.intValue(); 
+							//xbpsTerm.setMqId(mqId);
+							  if(xbpsTerm!=null){
+									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
 									xbpsTerm.setPagging(null);							 
 									xntcCalendars.add(xbpsTerm);
 									vresultMessage.setResultListObj(xntcCalendars);
@@ -100,5 +114,6 @@ public class LoadFormResource extends BaseResource {
 	public void setXstream(com.thoughtworks.xstream.XStream xstream) {
 		this.xstream = xstream;
 	}
+
 
 }

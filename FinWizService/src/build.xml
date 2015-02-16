@@ -12,6 +12,7 @@
 			<fileset dir="../build/classes" includes="th/co/vlink/utils/properties/*.class" />
 			-->
 			<fileset dir="../build/classes" includes="com/gl/finwiz/core/model/*.class" />
+			<fileset dir="../build/classes" includes="com/gl/finwiz/core/los/model/*.class" />
 			<fileset dir="../build/classes" includes="com/gl/finwiz/core/xstream/common/*.class" />			 
 		</jar>
 	</target> 

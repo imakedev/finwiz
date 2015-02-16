@@ -16,15 +16,14 @@ import com.gl.finwiz.core.model.ParamPageM;
 import com.gl.finwiz.core.service.LoadFormExecutor;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 
-
-public class LoadFormResource extends BaseResource {
+public class CacheResource extends BaseResource {
 	private static final Logger logger = Logger.getLogger(ServiceConstant.LOG_APPENDER);  
 	@Autowired
 	private LoadFormExecutor loadFormExecutor;
 	private com.thoughtworks.xstream.XStream xstream; 
-	public LoadFormResource() {
+	public CacheResource() {
 		super();
-		logger.debug("into constructor LoadFormResource");
+		logger.debug("into constructor CacheResource");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -100,5 +99,6 @@ public class LoadFormResource extends BaseResource {
 	public void setXstream(com.thoughtworks.xstream.XStream xstream) {
 		this.xstream = xstream;
 	}
+
 
 }
