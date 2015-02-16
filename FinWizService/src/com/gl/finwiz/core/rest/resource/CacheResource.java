@@ -12,14 +12,14 @@ import org.restlet.resource.ResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gl.finwiz.core.constant.ServiceConstant;
-import com.gl.finwiz.core.model.ParamPageM;
-import com.gl.finwiz.core.service.LoadFormExecutor;
+import com.gl.finwiz.core.model.CacheM;
+import com.gl.finwiz.core.service.CacheExecutor;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 
 public class CacheResource extends BaseResource {
 	private static final Logger logger = Logger.getLogger(ServiceConstant.LOG_APPENDER);  
 	@Autowired
-	private LoadFormExecutor loadFormExecutor;
+	private CacheExecutor cacheExecutor;
 	private com.thoughtworks.xstream.XStream xstream; 
 	public CacheResource() {
 		super();
@@ -44,11 +44,11 @@ public class CacheResource extends BaseResource {
 		InputStream in = null;
 		try {
 			in = entity.getStream();
-			xstream.processAnnotations(ParamPageM.class);// or xstream.autodetectAnnotations(true); (Auto-detect  Annotations)
-			ParamPageM xbpsTerm = new ParamPageM();
+			xstream.processAnnotations(CacheM.class);// or xstream.autodetectAnnotations(true); (Auto-detect  Annotations)
+			CacheM xbpsTerm = new CacheM();
 			Object ntcCalendarObj = xstream.fromXML(in);
 			if (ntcCalendarObj != null) {
-				xbpsTerm = (ParamPageM) ntcCalendarObj;
+				xbpsTerm = (CacheM) ntcCalendarObj;
 				if (xbpsTerm != null) { 
 					if (xbpsTerm.getServiceName() != null
 							&& xbpsTerm.getServiceName().length()!=0) {
@@ -56,11 +56,21 @@ public class CacheResource extends BaseResource {
 								+ xbpsTerm.getServiceName());
 						String serviceName = xbpsTerm.getServiceName();
 						
-						if(serviceName.equals(ServiceConstant.LOAD_FORM)){
+						if(serviceName.equals(ServiceConstant.CACHE_REFRESH_ALL)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
-							xbpsTerm= loadFormExecutor.loadPage(xbpsTerm);
+							//xbpsTerm= cacheExecutor.loadPage(xbpsTerm);
 							  if(xbpsTerm!=null){
-									List<ParamPageM> xntcCalendars = new ArrayList<ParamPageM>(1);
+									List<CacheM> xntcCalendars = new ArrayList<CacheM>(1);
+									xbpsTerm.setPagging(null);							 
+									xntcCalendars.add(xbpsTerm);
+									vresultMessage.setResultListObj(xntcCalendars);
+								}
+								return getRepresentation(entity, vresultMessage, xstream);
+					 }else if(serviceName.equals(ServiceConstant.CACHE_GET)){
+							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							//xbpsTerm= cacheExecutor.loadPage(xbpsTerm);
+							  if(xbpsTerm!=null){
+									List<CacheM> xntcCalendars = new ArrayList<CacheM>(1);
 									xbpsTerm.setPagging(null);							 
 									xntcCalendars.add(xbpsTerm);
 									vresultMessage.setResultListObj(xntcCalendars);
