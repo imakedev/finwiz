@@ -58,6 +58,7 @@ public class CacheResource extends BaseResource {
 						
 						if(serviceName.equals(ServiceConstant.CACHE_REFRESH_ALL)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							cacheExecutor.refreshAll();
 							//xbpsTerm= cacheExecutor.loadPage(xbpsTerm);
 							  if(xbpsTerm!=null){
 									List<CacheM> xntcCalendars = new ArrayList<CacheM>(1);

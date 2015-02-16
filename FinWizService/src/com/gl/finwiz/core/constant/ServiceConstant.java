@@ -36,7 +36,7 @@ public class ServiceConstant {
 	public static final String LOS_APPLICATION_UPDATE = "updateLosApplication";
 	public static final String LOS_APPLICATION_ITEMS_DELETE = "deleteLosApplicationItems";
 	public static final String LOS_APPLICATION_DELETE = "deleteLosApplication";
-		
+	public static final String LOS_APPLICATION_FIND_BY_ID = "findLosApplicationById";
 	// CacheUtil
 	public static final String CACHE_REFRESH = "cacheRefresh";
 	public static final String CACHE_REFRESH_ALL= "cacheRefreshAll";

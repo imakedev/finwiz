@@ -71,7 +71,7 @@ public class LosResource extends BaseResource {
 								return getRepresentation(entity, vresultMessage, xstream);
 					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_SAVE_VERSION)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
-							Long mqId= losExecutor.saveLosApplication(xbpsTerm);
+							Long mqId= losExecutor.saveLosApplicationVersion(xbpsTerm);
 							int updateRecord=mqId.intValue(); 
 							//xbpsTerm.setMqId(mqId);
 							  if(xbpsTerm!=null){
@@ -81,6 +81,39 @@ public class LosResource extends BaseResource {
 									vresultMessage.setResultListObj(xntcCalendars);
 								}
 								return getRepresentation(entity, vresultMessage, xstream);
+					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_FIND_BY_ID)){
+							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							xbpsTerm = losExecutor.findLosApplicationById(xbpsTerm.getLosAppId());
+							//int updateRecord=mqId.intValue(); 
+							//xbpsTerm.setMqId(mqId);
+							  if(xbpsTerm!=null){
+									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
+									xbpsTerm.setPagging(null);							 
+									xntcCalendars.add(xbpsTerm);
+									vresultMessage.setResultListObj(xntcCalendars);
+								}
+								return getRepresentation(entity, vresultMessage, xstream);
+					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_UPDATE)){
+							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							Long mqId= losExecutor.updateLosApplicationVersion(xbpsTerm);
+							int updateRecord=mqId.intValue(); 
+							//xbpsTerm.setMqId(mqId);
+							  if(xbpsTerm!=null){
+									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
+									xbpsTerm.setPagging(null);							 
+									xntcCalendars.add(xbpsTerm);
+									vresultMessage.setResultListObj(xntcCalendars);
+								}
+								return getRepresentation(entity, vresultMessage, xstream);
+					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_SEARCH)){
+							//Pagging page = xbpsTerm.getPagging(); 
+							@SuppressWarnings("rawtypes")
+							List result = (List) losExecutor.searchLosApplication(xbpsTerm);
+							 FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							if(result!=null){		
+								vresultMessage.setResultListObj(result);
+							}
+							return getRepresentation(entity, vresultMessage, xstream);	
 					 }
 					}else {
 					}

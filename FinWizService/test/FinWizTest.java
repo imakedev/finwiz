@@ -1,10 +1,17 @@
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.gl.finwiz.core.los.model.LosApplicationM;
+import com.gl.finwiz.core.los.service.LosExecutor;
+import com.gl.finwiz.core.model.CacheM;
 import com.gl.finwiz.core.model.ParamPageM;
 import com.gl.finwiz.core.model.UserLoginM;
+import com.gl.finwiz.core.service.CacheExecutor;
 import com.gl.finwiz.core.service.LoadFormExecutor;
 import com.gl.finwiz.core.userprofile.service.UserProfileService;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
@@ -13,6 +20,29 @@ import com.thoughtworks.xstream.XStream;
 
 
 public class FinWizTest {
+	public void testLosList(LosExecutor losExecutor){
+		
+		LosApplicationM losApplication =new LosApplicationM();
+		losApplication.setUpdatedBy("checker");
+		List<LosApplicationM> list = losExecutor.searchLosApplication(losApplication );
+		 System.out.println("list="+list);
+		/*List va= (String[])list.get(0);*/
+		
+		
+	}
+	public void testCache(CacheExecutor cacheExecutor){
+		CacheM cacheM=new CacheM();
+	
+		cacheM = cacheExecutor.refreshAll();
+		Map m=cacheM.getCacheObject();
+		List list =(List)m.get("TITLE");
+		String[] result1=(String[])list.get(0);
+	
+		System.out.println(result1[0]);
+		/*List va= (String[])list.get(0);
+		
+		 System.out.println("list="+va[0]);*/
+	}
 	public void testLoadPage(LoadFormExecutor loadFormExecutor){
 		ParamPageM paramPageM=new ParamPageM();
 		paramPageM.setPageId("5");
@@ -38,11 +68,19 @@ public class FinWizTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"spring-config-test.xml");
 		FinWizTest finWizTest=new FinWizTest();
-		UserProfileService userProfileService = (UserProfileService) context
+		/*UserProfileService userProfileService = (UserProfileService) context
 				.getBean("userProfileService");
 		LoadFormExecutor loadFormExecutor = (LoadFormExecutor) context
 				.getBean("loadFormExecutorImpl");
 		finWizTest.testLoadPage(loadFormExecutor);
+		*/
+	/*	CacheExecutor cacheExecutor = (CacheExecutor) context
+				.getBean("cacheExecutorImpl");
+		finWizTest.testCache(cacheExecutor);*/
+		LosExecutor losExecutor = (LosExecutor) context
+				.getBean("losExecutorImpl");
+		finWizTest.testLosList(losExecutor);
+		
 		//finWizTest.testLogin(userProfileService);
 				//.getBean("userServiceJdbcImp");
 	/*	Aoe person = new Aoe();
