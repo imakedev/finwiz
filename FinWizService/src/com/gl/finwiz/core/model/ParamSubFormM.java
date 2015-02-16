@@ -3,6 +3,7 @@ package com.gl.finwiz.core.model;
 import java.io.Serializable;
 
 import com.gl.finwiz.core.xstream.common.FinWizXML;
+import com.gl.finwiz.core.xstream.common.Paging;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("paramSubFormM")
 public class ParamSubFormM extends FinWizXML implements Serializable {
@@ -10,6 +11,7 @@ public class ParamSubFormM extends FinWizXML implements Serializable {
 	private String paramSubFormId;
 
 	private String pageId;
+	private Paging paging;
 	private String formPath;
 	public String getParamSubFormId() {
 		return paramSubFormId;
@@ -29,6 +31,13 @@ public class ParamSubFormM extends FinWizXML implements Serializable {
 	}
 	public void setFormPath(String formPath) {
 		this.formPath = formPath;
+	}
+	
+	public Paging getPaging() {
+		return paging;
+	}
+	public void setPagging(Paging pagging) {
+		this.paging = pagging;
 	}
 
 }
