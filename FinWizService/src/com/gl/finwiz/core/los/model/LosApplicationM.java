@@ -59,6 +59,8 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	private int version;
 
 	private int verson;
+	
+	private LosCustomerM losCustomerM;
 /*
 	//bi-directional many-to-one association to LosApplicationLog
 	@OneToMany(mappedBy="losApplication")
@@ -80,11 +82,8 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	@OneToMany(mappedBy="losApplication")
 	private List<LosPolicyResult> losPolicyResults;*/
 
-	public LosApplicationM() {
-	}
-
 	public String getLosAppId() {
-		return this.losAppId;
+		return losAppId;
 	}
 
 	public void setLosAppId(String losAppId) {
@@ -92,7 +91,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getApplicationId() {
-		return this.applicationId;
+		return applicationId;
 	}
 
 	public void setApplicationId(String applicationId) {
@@ -100,7 +99,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getApplicationStatus() {
-		return this.applicationStatus;
+		return applicationStatus;
 	}
 
 	public void setApplicationStatus(String applicationStatus) {
@@ -108,7 +107,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getApprovedBy() {
-		return this.approvedBy;
+		return approvedBy;
 	}
 
 	public void setApprovedBy(String approvedBy) {
@@ -116,7 +115,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public Date getApprovedDate() {
-		return this.approvedDate;
+		return approvedDate;
 	}
 
 	public void setApprovedDate(Date approvedDate) {
@@ -124,7 +123,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getCampaignId() {
-		return this.campaignId;
+		return campaignId;
 	}
 
 	public void setCampaignId(String campaignId) {
@@ -132,7 +131,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getContractNo() {
-		return this.contractNo;
+		return contractNo;
 	}
 
 	public void setContractNo(String contractNo) {
@@ -140,7 +139,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getCreatedBy() {
-		return this.createdBy;
+		return createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -148,7 +147,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public Date getCreatedTime() {
-		return this.createdTime;
+		return createdTime;
 	}
 
 	public void setCreatedTime(Date createdTime) {
@@ -156,7 +155,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getDealerId() {
-		return this.dealerId;
+		return dealerId;
 	}
 
 	public void setDealerId(String dealerId) {
@@ -164,7 +163,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public double getDownPayment() {
-		return this.downPayment;
+		return downPayment;
 	}
 
 	public void setDownPayment(double downPayment) {
@@ -172,7 +171,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public double getFinAmount() {
-		return this.finAmount;
+		return finAmount;
 	}
 
 	public void setFinAmount(double finAmount) {
@@ -180,7 +179,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getFinId() {
-		return this.finId;
+		return finId;
 	}
 
 	public void setFinId(String finId) {
@@ -188,7 +187,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public Date getFirstDueDate() {
-		return this.firstDueDate;
+		return firstDueDate;
 	}
 
 	public void setFirstDueDate(Date firstDueDate) {
@@ -196,7 +195,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getInputDataBy() {
-		return this.inputDataBy;
+		return inputDataBy;
 	}
 
 	public void setInputDataBy(String inputDataBy) {
@@ -204,7 +203,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public Date getInputDataDate() {
-		return this.inputDataDate;
+		return inputDataDate;
 	}
 
 	public void setInputDataDate(Date inputDataDate) {
@@ -212,7 +211,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public double getInstallment() {
-		return this.installment;
+		return installment;
 	}
 
 	public void setInstallment(double installment) {
@@ -220,7 +219,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public int getIsActive() {
-		return this.isActive;
+		return isActive;
 	}
 
 	public void setIsActive(int isActive) {
@@ -228,7 +227,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public int getTerm() {
-		return this.term;
+		return term;
 	}
 
 	public void setTerm(int term) {
@@ -236,7 +235,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public String getUpdatedBy() {
-		return this.updatedBy;
+		return updatedBy;
 	}
 
 	public void setUpdatedBy(String updatedBy) {
@@ -244,7 +243,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public Date getUpdatedDate() {
-		return this.updatedDate;
+		return updatedDate;
 	}
 
 	public void setUpdatedDate(Date updatedDate) {
@@ -252,7 +251,7 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public int getVersion() {
-		return this.version;
+		return version;
 	}
 
 	public void setVersion(int version) {
@@ -260,10 +259,21 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 	}
 
 	public int getVerson() {
-		return this.verson;
+		return verson;
 	}
 
 	public void setVerson(int verson) {
 		this.verson = verson;
 	}
+
+	public LosCustomerM getLosCustomerM() {
+		return losCustomerM;
+	}
+
+	public void setLosCustomerM(LosCustomerM losCustomerM) {
+		this.losCustomerM = losCustomerM;
+	}
+
+
+
 }
