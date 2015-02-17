@@ -48,6 +48,9 @@ public class UserLoginM extends FinWizXML implements Serializable {
 	
 	private List<ParamPageM> paramPages;
 	
+	private List<ParamSubFormM> paramSubForms;
+	private List<ParamTabM> paramTabM;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -179,6 +182,22 @@ public class UserLoginM extends FinWizXML implements Serializable {
 
 	public void setParamPages(List<ParamPageM> paramPages) {
 		this.paramPages = paramPages;
+	}
+
+	public List<ParamSubFormM> getParamSubForms() {
+		return paramSubForms;
+	}
+
+	public void setParamSubForms(List<ParamSubFormM> paramSubForms) {
+		this.paramSubForms = paramSubForms;
+	}
+
+	public List<ParamTabM> getParamTabM() {
+		return paramTabM;
+	}
+
+	public void setParamTabM(List<ParamTabM> paramTabM) {
+		this.paramTabM = paramTabM;
 	}
 
 	

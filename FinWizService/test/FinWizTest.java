@@ -68,20 +68,20 @@ public class FinWizTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"spring-config-test.xml");
 		FinWizTest finWizTest=new FinWizTest();
-		/*UserProfileService userProfileService = (UserProfileService) context
+		UserProfileService userProfileService = (UserProfileService) context
 				.getBean("userProfileService");
-		LoadFormExecutor loadFormExecutor = (LoadFormExecutor) context
+		/*LoadFormExecutor loadFormExecutor = (LoadFormExecutor) context
 				.getBean("loadFormExecutorImpl");
-		finWizTest.testLoadPage(loadFormExecutor);
-		*/
+		finWizTest.testLoadPage(loadFormExecutor);*/
+		
 	/*	CacheExecutor cacheExecutor = (CacheExecutor) context
 				.getBean("cacheExecutorImpl");
-		finWizTest.testCache(cacheExecutor);*/
+		finWizTest.testCache(cacheExecutor);
 		LosExecutor losExecutor = (LosExecutor) context
 				.getBean("losExecutorImpl");
-		finWizTest.testLosList(losExecutor);
+		finWizTest.testLosList(losExecutor);*/
 		
-		//finWizTest.testLogin(userProfileService);
+		finWizTest.testLogin(userProfileService);
 				//.getBean("userServiceJdbcImp");
 	/*	Aoe person = new Aoe();
 		person.setName("Alba");*/

@@ -1,6 +1,5 @@
 package com.gl.finwiz.core.userprofile.dao;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,20 +13,23 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gl.finwiz.core.domain.ParamPage;
+import com.gl.finwiz.core.domain.ParamSubForm;
+import com.gl.finwiz.core.domain.ParamTab;
 import com.gl.finwiz.core.domain.UserLogin;
 import com.gl.finwiz.core.domain.UserRoleMapping;
 import com.gl.finwiz.core.model.ParamPageM;
+import com.gl.finwiz.core.model.ParamSubFormM;
+import com.gl.finwiz.core.model.ParamTabM;
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.model.UserRoleM;
 import com.gl.finwiz.core.userprofile.domain.User;
 import com.gl.finwiz.core.userprofile.service.UserProfileService;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 
-
 //@Service
 @Repository("userProfileService")
 @Transactional
-public class UserProfileServiceImpl implements UserProfileService{
+public class UserProfileServiceImpl implements UserProfileService {
 	@Autowired
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -76,6 +78,68 @@ public class UserProfileServiceImpl implements UserProfileService{
 			}
 			
 		//get menu
+
+
+query=entityManager.createNativeQuery("SELECT param_page.* FROM PARAM_PAGE param_page  "
+		+ " left join USER_ROLE_SYS_OBJECT_MAPPING mapping on mapping.SYS_OBJECT_ID=param_page.PAGE_ID "
+		+ " where mapping.ROLE_ID=:roleId order by param_page.menu_order asc  ",ParamPage.class);
+System.out.println(""+role);
+query.setParameter("roleId",role);
+
+List<ParamPage> paramPages=query.getResultList();
+List<ParamPageM> paramPagesM=null;
+if(paramPages!=null && paramPages.size()>0){
+	paramPagesM = new ArrayList<ParamPageM>(paramPages.size());
+	for (ParamPage paramPage : paramPages) {
+		ParamPageM paramPageM = new ParamPageM();
+		BeanUtils.copyProperties(paramPage, paramPageM);
+		paramPagesM.add(paramPageM);
+	}
+	userLoginM.setParamPages(paramPagesM);
+}
+
+		
+		// get subform
+		query=entityManager.createNativeQuery("SELECT param_subform.* FROM PARAM_SUBFORM param_subform  "
+				+ " left join USER_ROLE_SYS_OBJECT_MAPPING mapping on mapping.SYS_OBJECT_ID=param_subform.subform_id "
+				+ " where mapping.ROLE_ID=:roleId   ",ParamSubForm.class);
+		System.out.println(""+role);
+		query.setParameter("roleId",role);
+
+		List<ParamSubForm> paramSubForms=query.getResultList();
+		List<ParamSubFormM> paramSubFormsM=null;
+		if(paramSubForms!=null && paramSubForms.size()>0){
+			paramSubFormsM = new ArrayList<ParamSubFormM>(paramSubForms.size());
+			for (ParamSubForm paramSubForm : paramSubForms) {
+				ParamSubFormM paramSubFormM = new ParamSubFormM();
+				BeanUtils.copyProperties(paramSubForm, paramSubFormM,"id");
+				//paramSubForm.getId().getPageId();
+				paramSubFormsM.add(paramSubFormM);
+			}
+			userLoginM.setParamSubForms(paramSubFormsM);
+		}
+			
+	// get tab
+			query=entityManager.createNativeQuery("SELECT param_tab.* FROM PARAM_TAB param_tab  "
+					+ " left join USER_ROLE_SYS_OBJECT_MAPPING mapping on mapping.SYS_OBJECT_ID=param_tab.TAB_ID "
+					+ " where mapping.ROLE_ID=:roleId  order by param_tab.tab_order asc  ",ParamTab.class);
+			
+			query.setParameter("roleId",role);
+
+			List<ParamTab> paramTabs=query.getResultList();
+			List<ParamTabM> paramTabsM=null;
+			if(paramTabs!=null && paramTabs.size()>0){
+				paramTabsM = new ArrayList<ParamTabM>(paramTabs.size());
+				for (ParamTab paramTab : paramTabs) {
+					ParamTabM paramTabM = new ParamTabM();
+					BeanUtils.copyProperties(paramTab, paramTabM,"id");
+					//paramSubForm.getId().getPageId();
+					paramTabsM.add(paramTabM);
+				}
+				userLoginM.setParamTabM(paramTabsM);
+			}
+		}
+/*
 			query=entityManager.createQuery("select p.id.pageId from UserRoleMenuMapping p "
 					+ "where p.id.roleId=? ");
 			System.out.println(""+role);
@@ -98,28 +162,12 @@ public class UserProfileServiceImpl implements UserProfileService{
 				userLoginM.setParamPages(paramPagesM);
 			}
 		}
-		/*String pageName="";
-		if(userlogin.getUserId().equals("checker")){
-			pageName="los_inbox";
-		}
-		String subForm1="";
-		String subForm2="";
-		List<String> subForms=new ArrayList<String>();
+		*/
 		
-		String tab1="loan_request";
-		List<String> tabs=new ArrayList<String>();	
-		
-		tabs.add(tab1);
-	
-		PageM pageM=new PageM();
-		pageM.setPageName(pageName);
-		pageM.setSubForms(subForms);
-		pageM.setTabs(tabs);*/
 		List results =new ArrayList();
 		results.add(userLoginM);
 	//	results.add(pageM);
 		finWizResultMessage.setResultListObj(results);
 		return finWizResultMessage;
 	}
-
 }

@@ -13,7 +13,7 @@ public class ParamSubFormPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="PARAM_SUBFORM_ID")
+	@Column(name="SUBFORM_ID")
 	private String paramSubFormId;
 
 
