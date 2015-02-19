@@ -44,6 +44,7 @@ public class WorkFlowResource extends BaseResource {
 		InputStream in = null;
 		try {
 			in = entity.getStream();
+			
 			xstream.processAnnotations(WfActivityInstanceM.class);// or xstream.autodetectAnnotations(true); (Auto-detect  Annotations)
 			WfActivityInstanceM xbpsTerm = new WfActivityInstanceM();
 			Object ntcCalendarObj = xstream.fromXML(in);
@@ -57,6 +58,7 @@ public class WorkFlowResource extends BaseResource {
 						String serviceName = xbpsTerm.getServiceName();
 						if(serviceName.equals(ServiceConstant.WF_START)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							System.out.println("xx="+wfProcessExecutor);
 							xbpsTerm = wfProcessExecutor.startWfProcess(xbpsTerm);
 							//xbpsTerm= cacheExecutor.loadPage(xbpsTerm);
 							  if(xbpsTerm!=null){
@@ -74,6 +76,17 @@ public class WorkFlowResource extends BaseResource {
 									List<WfActivityInstanceM> xntcCalendars = new ArrayList<WfActivityInstanceM>(1);
 									xbpsTerm.setPagging(null);							 
 									xntcCalendars.add(xbpsTerm);
+									vresultMessage.setResultListObj(xntcCalendars);
+								}
+								return getRepresentation(entity, vresultMessage, xstream);
+					 }else if(serviceName.equals(ServiceConstant.TODOLIST_GET)){
+							FinWizResultMessage vresultMessage = new FinWizResultMessage();
+							//xbpsTerm= cacheExecutor.loadPage(xbpsTerm);
+							List<WfActivityInstanceM> xntcCalendars  = wfProcessExecutor.listTodoList(xbpsTerm);
+							  if(xntcCalendars!=null){
+								//	List<WfActivityInstanceM> xntcCalendars = new ArrayList<WfActivityInstanceM>(1);
+								/*	xbpsTerm.setPagging(null);							 
+									xntcCalendars.add(xbpsTerm);*/
 									vresultMessage.setResultListObj(xntcCalendars);
 								}
 								return getRepresentation(entity, vresultMessage, xstream);

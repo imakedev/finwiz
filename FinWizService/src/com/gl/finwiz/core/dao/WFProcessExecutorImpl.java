@@ -1,5 +1,6 @@
 package com.gl.finwiz.core.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,9 +19,6 @@ import com.gl.finwiz.core.domain.WfActivityInstance;
 import com.gl.finwiz.core.model.WfActivityInstanceM;
 import com.gl.finwiz.core.service.WFProcessExecutor;
 import com.gl.finwiz.core.utils.TokenUtils;
-import com.gl.finwiz.core.workflow.ActivityExecutor;
-import com.gl.finwiz.core.workflow.post.PostConExecutor;
-import com.gl.finwiz.core.workflow.pre.PreConExecutor;
 
 @Repository("WFProcessExecutorImpl")
 @Transactional
@@ -47,14 +45,15 @@ Query query = entityManager.createQuery("select p from WfActivity p "
 			WfActivity wfActivity = wfActivitys.get(0);
 
 			// run  pre con
-			PreConExecutor preConExecutor = (PreConExecutor) ctx
+			System.out.println("ctx->"+ctx+"wfActivity.getJavaPreConImpl()->"+wfActivity.getJavaPreConImpl());
+			/*PreConExecutor preConExecutor = (PreConExecutor) ctx
 					.getBean(wfActivity.getJavaPreConImpl());
-				preConExecutor.runPreCondition();
+				preConExecutor.runPreCondition();*/
 				
 			// run activity
-			ActivityExecutor activityExecutor = (ActivityExecutor) ctx
+			/*ActivityExecutor activityExecutor = (ActivityExecutor) ctx
 					.getBean(wfActivity.getJavaActivityImpl());
-				activityExecutor.runActivity();
+				activityExecutor.runActivity();*/
 			WfActivityInstance wfActivityInstance = new WfActivityInstance();
 			BeanUtils.copyProperties(wfActivityInstanceM, wfActivityInstance);
 			String token = TokenUtils.genToken(10);
@@ -83,9 +82,9 @@ Query query = entityManager.createQuery("select p from WfActivity p "
 		if (wfActivityConditions != null && wfActivityConditions.size() > 0) {
 			for (WfActivityCondition wfActivityCondition : wfActivityConditions) {
 				// run  post con
-				PostConExecutor postConExecutor = (PostConExecutor) ctx
+				/*PostConExecutor postConExecutor = (PostConExecutor) ctx
 						.getBean(wfActivityCondition.getJavaPostConImpl());
-				postConExecutor.runPostCondition();	
+				postConExecutor.runPostCondition();	*/
 				
 				// get next activity
 				String nextActivityId=wfActivityCondition.getNextActivityId();
@@ -99,14 +98,14 @@ Query query = entityManager.createQuery("select p from WfActivity p "
 					WfActivity wfActivity = wfActivitys.get(0);
 
 					// run  pre con
-					PreConExecutor preConExecutor = (PreConExecutor) ctx
+					/*PreConExecutor preConExecutor = (PreConExecutor) ctx
 							.getBean(wfActivity.getJavaPreConImpl());
-						preConExecutor.runPreCondition();
+						preConExecutor.runPreCondition();*/
 						
 					// run activity
-					ActivityExecutor activityExecutor = (ActivityExecutor) ctx
+					/*ActivityExecutor activityExecutor = (ActivityExecutor) ctx
 							.getBean(wfActivity.getJavaActivityImpl());
-						activityExecutor.runActivity();
+						activityExecutor.runActivity();*/
 					WfActivityInstance wfActivityInstance = new WfActivityInstance();
 					BeanUtils.copyProperties(wfActivityInstanceM, wfActivityInstance);
 					String token = TokenUtils.genToken(10);
@@ -129,6 +128,27 @@ Query query = entityManager.createQuery("select p from WfActivity p "
 			 int updateCount = query.executeUpdate();
 		}
 		return wfActivityInstanceM;
+	}
+
+	@Override
+	public List<WfActivityInstanceM> listTodoList(
+			WfActivityInstanceM wfActivityInstanceM) {
+		// TODO Auto-generated method stub
+		Query query = entityManager.createQuery("select p from WfActivityInstance p "
+				+ "where  ( p.wfActivityInstanceOwnerUser =:wfActivityInstanceOwnerUser or p.wfActivityInstanceOwnerRole=:wfActivityInstanceOwnerRole ) "
+				+ " and p.wfActivityInstanceStatus=:wfActivityInstanceStatus ",
+				WfActivityInstance.class);
+		query.setParameter("wfActivityInstanceOwnerRole", wfActivityInstanceM.getWfActivityInstanceOwnerRole());
+		query.setParameter("wfActivityInstanceOwnerUser", wfActivityInstanceM.getWfActivityInstanceOwnerUser());
+		query.setParameter("wfActivityInstanceStatus", wfActivityInstanceM.getWfActivityInstanceStatus());
+		List<WfActivityInstance> wfActivityInstances = query.getResultList();
+		List<WfActivityInstanceM> WfActivityInstanceModels = new ArrayList<WfActivityInstanceM>(wfActivityInstances.size());
+		for (WfActivityInstance wfActivityInstance : wfActivityInstances) {
+			WfActivityInstanceM wfActivityInstanceModel =new WfActivityInstanceM();
+			BeanUtils.copyProperties(wfActivityInstance, wfActivityInstanceModel);
+			WfActivityInstanceModels.add(wfActivityInstanceModel);
+		}
+		return WfActivityInstanceModels;
 	}
 
 }

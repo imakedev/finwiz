@@ -23,22 +23,24 @@ public class LosExecutorImpl implements LosExecutor {
 	@PersistenceContext
 	private EntityManager entityManager;
 	@Override
-	public Long saveLosApplication(LosApplicationM losApplicationM) {
+	public String saveLosApplication(LosApplicationM losApplicationM) {
 		// TODO Auto-generated method stub
 		LosApplication losApplication =new LosApplication();
 		BeanUtils.copyProperties(losApplicationM, losApplication);
 		String token=TokenUtils.genToken(10);
 		
 		losApplication.setLosAppId(token);
-		losApplication.setApplicationId(token);
+		//losApplication.setApplicationId(token);
 		losApplication.setVersion(1);
 		losApplication.setIsActive(1);
 		entityManager.persist(losApplication);
-		return 1l;
+		entityManager.flush();
+		return losApplication.getLosAppId();
+		
 	}
 
 	@Override
-	public Long saveLosApplicationVersion(LosApplicationM losApplicationM) {
+	public String saveLosApplicationVersion(LosApplicationM losApplicationM) {
 		// TODO Auto-generated method stub
 		LosApplication losApplication =new LosApplication();
 		BeanUtils.copyProperties(losApplicationM, losApplication);
@@ -57,7 +59,8 @@ public class LosExecutorImpl implements LosExecutor {
 		losApplication.setLosAppId(token);
 		losApplication.setIsActive(1);
 		entityManager.persist(losApplication);
-		return 1l;
+		entityManager.flush();
+		return losApplication.getLosAppId();
 	}
 
 	@Override
@@ -70,12 +73,13 @@ public class LosExecutorImpl implements LosExecutor {
 	}
 
 	@Override
-	public Long updateLosApplicationVersion(LosApplicationM losApplicationM) {
+	public String updateLosApplicationVersion(LosApplicationM losApplicationM) {
 		// TODO Auto-generated method stub
 		LosApplication losApplication =new LosApplication();
 		BeanUtils.copyProperties(losApplicationM, losApplication);
 		entityManager.merge(losApplication);
-		return 1l;
+		entityManager.flush();
+		return losApplication.getLosAppId();
 	}
 
 	@Override

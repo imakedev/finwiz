@@ -59,25 +59,29 @@ public class LosResource extends BaseResource {
 						
 						if(serviceName.equals(ServiceConstant.LOS_APPLICATION_SAVE)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
-							Long mqId= losExecutor.saveLosApplication(xbpsTerm);
-							int updateRecord=mqId.intValue(); 
+							String losAppId= losExecutor.saveLosApplication(xbpsTerm);
+						//	int updateRecord=mqId.intValue(); 
 							//xbpsTerm.setMqId(mqId);
 							  if(xbpsTerm!=null){
 									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
-									xbpsTerm.setPagging(null);							 
+									xbpsTerm.setPagging(null);
+									xbpsTerm.setLosAppId(losAppId);
 									xntcCalendars.add(xbpsTerm);
+								
 									vresultMessage.setResultListObj(xntcCalendars);
 								}
 								return getRepresentation(entity, vresultMessage, xstream);
 					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_SAVE_VERSION)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
-							Long mqId= losExecutor.saveLosApplicationVersion(xbpsTerm);
-							int updateRecord=mqId.intValue(); 
+							String losAppId= losExecutor.saveLosApplicationVersion(xbpsTerm);
+							//int updateRecord=mqId.intValue(); 
 							//xbpsTerm.setMqId(mqId);
 							  if(xbpsTerm!=null){
 									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
-									xbpsTerm.setPagging(null);							 
+									xbpsTerm.setPagging(null);						
+									xbpsTerm.setLosAppId(losAppId);
 									xntcCalendars.add(xbpsTerm);
+								
 									vresultMessage.setResultListObj(xntcCalendars);
 								}
 								return getRepresentation(entity, vresultMessage, xstream);
@@ -95,12 +99,13 @@ public class LosResource extends BaseResource {
 								return getRepresentation(entity, vresultMessage, xstream);
 					 }else if(serviceName.equals(ServiceConstant.LOS_APPLICATION_UPDATE)){
 							FinWizResultMessage vresultMessage = new FinWizResultMessage();
-							Long mqId= losExecutor.updateLosApplicationVersion(xbpsTerm);
-							int updateRecord=mqId.intValue(); 
+							String losAppId= losExecutor.updateLosApplicationVersion(xbpsTerm);
+							//int updateRecord=mqId.intValue(); 
 							//xbpsTerm.setMqId(mqId);
 							  if(xbpsTerm!=null){
 									List<LosApplicationM> xntcCalendars = new ArrayList<LosApplicationM>(1);
-									xbpsTerm.setPagging(null);							 
+									xbpsTerm.setPagging(null);	
+									xbpsTerm.setLosAppId(losAppId);
 									xntcCalendars.add(xbpsTerm);
 									vresultMessage.setResultListObj(xntcCalendars);
 								}

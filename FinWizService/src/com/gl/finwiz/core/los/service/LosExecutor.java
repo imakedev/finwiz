@@ -5,9 +5,9 @@ import java.util.List;
 import com.gl.finwiz.core.los.model.LosApplicationM;
 
 public interface LosExecutor {
-	public Long saveLosApplication(LosApplicationM losApplicationM) ;
-	public Long saveLosApplicationVersion(LosApplicationM losApplicationM) ;
+	public String saveLosApplication(LosApplicationM losApplicationM) ;
+	public String saveLosApplicationVersion(LosApplicationM losApplicationM) ;
 	public LosApplicationM findLosApplicationById(String losAppId);
-	public Long updateLosApplicationVersion(LosApplicationM losApplicationM) ;
+	public String updateLosApplicationVersion(LosApplicationM losApplicationM) ;
 	public List<LosApplicationM> searchLosApplication(LosApplicationM losApplicationM) ;
 }
