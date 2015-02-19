@@ -25,6 +25,11 @@
 		scope="prototype">
 		<property name="xstream" ref="xstream"></property>
 	</bean>
+	<bean id="workFlowResource"
+		class="com.gl.finwiz.core.rest.resource.WorkFlowResource"
+		scope="prototype">
+		<property name="xstream" ref="xstream"></property>
+	</bean>
 	 
 	
 </beans>

@@ -31,7 +31,13 @@
 						<lookup-method name="create"
 							bean="cacheResource" />
 					</bean>
-				</entry>	
+				</entry>
+				<entry key="/wfprocess">
+					<bean class="org.restlet.ext.spring.SpringFinder">
+						<lookup-method name="create"
+							bean="workFlowResource" />
+					</bean>
+				</entry>		
 			</map>
 		</property>
 		<!--<property name="routes[2].template.variables[URI]">
