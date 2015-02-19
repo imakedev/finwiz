@@ -1,8 +1,17 @@
 package com.gl.finwiz.core.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -32,13 +41,42 @@ public class WfActivity implements Serializable {
 
 	@Column(name="CREATED_BY")
 	private String createdBy;
+	
+	@Column(name="IS_START")
+	private String isstart;
+	
+	public String getIsstart() {
+		return isstart;
+	}
+
+	public void setIsstart(String isstart) {
+		this.isstart = isstart;
+	}
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATED_TIME")
 	private Date createdTime;
 
-	@Column(name="JAVA_IMPL")
-	private String javaImpl;
+	@Column(name="JAVA_PRE_CON_IMPL")
+	private String javaPreConImpl;
+	public String getJavaPreConImpl() {
+		return javaPreConImpl;
+	}
+
+	public void setJavaPreConImpl(String javaPreConImpl) {
+		this.javaPreConImpl = javaPreConImpl;
+	}
+
+	public String getJavaActivityImpl() {
+		return javaActivityImpl;
+	}
+
+	public void setJavaActivityImpl(String javaActivityImpl) {
+		this.javaActivityImpl = javaActivityImpl;
+	}
+
+	@Column(name="JAVA_ACTIVITY_IMPL")
+	private String javaActivityImpl;
 
 	@Column(name="REQUIRE_MERGE")
 	private String requireMerge;
@@ -114,13 +152,7 @@ public class WfActivity implements Serializable {
 		this.createdTime = createdTime;
 	}
 
-	public String getJavaImpl() {
-		return this.javaImpl;
-	}
 
-	public void setJavaImpl(String javaImpl) {
-		this.javaImpl = javaImpl;
-	}
 
 	public String getRequireMerge() {
 		return this.requireMerge;

@@ -3,48 +3,28 @@ package com.gl.finwiz.core.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 @XStreamAlias("WfProcessM")
 public class WfProcessM implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="WFP_ID")
+	
 	private String wfpId;
 
-	@Column(name="CREATED_BY")
 	private String createdBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="CREATED_TIME")
 	private Date createdTime;
 
-	@Column(name="FIN_ID")
 	private String finId;
 
-	@Column(name="JAVA_WF_DATA")
 	private String javaWfData;
 
-	@Column(name="UPDATED_BY")
 	private String updatedBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="UPDATED_TIME")
 	private Date updatedTime;
 
-	@Column(name="WFP_DESC")
 	private String wfpDesc;
 
-	@Column(name="WFP_NAME")
 	private String wfpName;
 
 	

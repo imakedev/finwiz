@@ -8,6 +8,26 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("wfActivityInstanceM")
 public class WfActivityInstanceM extends FinWizXML implements Serializable {
+	public String getFinId() {
+		return finId;
+	}
+
+
+	public void setFinId(String finId) {
+		this.finId = finId;
+	}
+
+
+	public String getWfpId() {
+		return wfpId;
+	}
+
+
+	public void setWfpId(String wfpId) {
+		this.wfpId = wfpId;
+	}
+
+
 	private static final long serialVersionUID = 1L;
 
 	
@@ -40,7 +60,9 @@ public class WfActivityInstanceM extends FinWizXML implements Serializable {
 
 	private String wfpiId;
 
-
+    //
+	private String finId;
+	private String wfpId;
 	public WfActivityInstanceM() {
 	}
 

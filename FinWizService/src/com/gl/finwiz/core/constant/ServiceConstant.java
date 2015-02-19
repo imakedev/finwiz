@@ -46,5 +46,7 @@ public class ServiceConstant {
 	// WorkFlow
 	public static final String TODOLIST_GET= "getTodoList";
 	public static final String TODOLIST_SAVE= "saveTodoList";
+	public static final String WF_START="startWF";
+	public static final String WF_NEXT="nextWF";
 	
 }
