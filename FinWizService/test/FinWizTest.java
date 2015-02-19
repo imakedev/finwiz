@@ -11,6 +11,7 @@ import com.gl.finwiz.core.los.service.LosExecutor;
 import com.gl.finwiz.core.model.CacheM;
 import com.gl.finwiz.core.model.ParamPageM;
 import com.gl.finwiz.core.model.UserLoginM;
+import com.gl.finwiz.core.model.WfActivityInstanceM;
 import com.gl.finwiz.core.service.CacheExecutor;
 import com.gl.finwiz.core.service.LoadFormExecutor;
 import com.gl.finwiz.core.service.WFProcessExecutor;
@@ -23,6 +24,17 @@ import com.thoughtworks.xstream.XStream;
 public class FinWizTest {
 	public void testWF(WFProcessExecutor wfProcessExecutor){
 		System.out.println(wfProcessExecutor);
+		WfActivityInstanceM  wfActivityInstanceM =new WfActivityInstanceM();
+		wfActivityInstanceM.setRefObjectId("0001");
+		wfActivityInstanceM.setFinId("THGL0000000001");
+		wfActivityInstanceM.setWfpId("WFP0001");
+		wfActivityInstanceM.setApplicationStatus("0001");
+		//wfProcessExecutor.startWfProcess(wfActivityInstanceM);
+		wfActivityInstanceM.setWfActivityInstanceId("2kk07m8q95");
+		wfActivityInstanceM.setActivityId("1");
+		wfActivityInstanceM.setApplicationStatus("0002");
+		
+		wfProcessExecutor.nextActivity(wfActivityInstanceM);
 	}
 	public void testLosList(LosExecutor losExecutor){
 		
@@ -30,7 +42,7 @@ public class FinWizTest {
 		losApplication.setUpdatedBy("checker");
 		List<LosApplicationM> list = losExecutor.searchLosApplication(losApplication );
 		 System.out.println("list="+list);
-		/*List va= (String[])list.get(0);*/
+		/*List va= (String[])list.get(0);*/ 
 		
 		
 	}

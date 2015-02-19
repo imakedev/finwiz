@@ -9,4 +9,10 @@ import com.gl.finwiz.core.workflow.post.PostConExecutor;
 @Transactional
 public class DefaultPostConExecutorImpl implements PostConExecutor{
 
+	@Override
+	public void runPostCondition() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
