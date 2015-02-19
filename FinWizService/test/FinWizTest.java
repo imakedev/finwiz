@@ -13,6 +13,7 @@ import com.gl.finwiz.core.model.ParamPageM;
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.service.CacheExecutor;
 import com.gl.finwiz.core.service.LoadFormExecutor;
+import com.gl.finwiz.core.service.WFProcessExecutor;
 import com.gl.finwiz.core.userprofile.service.UserProfileService;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 import com.thoughtworks.xstream.XStream;
@@ -20,6 +21,9 @@ import com.thoughtworks.xstream.XStream;
 
 
 public class FinWizTest {
+	public void testWF(WFProcessExecutor wfProcessExecutor){
+		System.out.println(wfProcessExecutor);
+	}
 	public void testLosList(LosExecutor losExecutor){
 		
 		LosApplicationM losApplication =new LosApplicationM();
@@ -68,8 +72,11 @@ public class FinWizTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"spring-config-test.xml");
 		FinWizTest finWizTest=new FinWizTest();
-		UserProfileService userProfileService = (UserProfileService) context
-				.getBean("userProfileService");
+		/*UserProfileService userProfileService = (UserProfileService) context
+				.getBean("userProfileService");*/
+		WFProcessExecutor wfProcessExecutor = (WFProcessExecutor) context
+				.getBean("WFProcessExecutorImpl");
+		finWizTest.testWF(wfProcessExecutor);
 		/*LoadFormExecutor loadFormExecutor = (LoadFormExecutor) context
 				.getBean("loadFormExecutorImpl");
 		finWizTest.testLoadPage(loadFormExecutor);*/
@@ -81,7 +88,7 @@ public class FinWizTest {
 				.getBean("losExecutorImpl");
 		finWizTest.testLosList(losExecutor);*/
 		
-		finWizTest.testLogin(userProfileService);
+		//finWizTest.testLogin(userProfileService);
 				//.getBean("userServiceJdbcImp");
 	/*	Aoe person = new Aoe();
 		person.setName("Alba");*/

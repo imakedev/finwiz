@@ -59,7 +59,17 @@ public class WfActivityInstanceM extends FinWizXML implements Serializable {
 	private String wfActivityInstanceStatus;
 
 	private String wfpiId;
+    public String getRefObjectId() {
+		return refObjectId;
+	}
 
+
+	public void setRefObjectId(String refObjectId) {
+		this.refObjectId = refObjectId;
+	}
+
+
+	private String refObjectId;
     //
 	private String finId;
 	private String wfpId;

@@ -1,7 +1,9 @@
 package com.gl.finwiz.core.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -61,6 +63,10 @@ public class WfActivityInstance implements Serializable {
 	@Column(name="WF_ACTIVITY_INSTANCE_STATUS")
 	private String wfActivityInstanceStatus;
 
+	@Column(name="REF_OBJECT_ID")
+	private String refObjectId;
+	
+	
 	@Column(name="WFPI_ID")
 	private String wfpiId;
 
@@ -211,6 +217,14 @@ public class WfActivityInstance implements Serializable {
 		wfActivityLog.setWfActivityInstance(null);
 
 		return wfActivityLog;
+	}
+
+	public String getRefObjectId() {
+		return refObjectId;
+	}
+
+	public void setRefObjectId(String refObjectId) {
+		this.refObjectId = refObjectId;
 	}
 
 }
