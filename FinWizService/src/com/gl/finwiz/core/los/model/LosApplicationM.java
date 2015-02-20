@@ -3,6 +3,7 @@ package com.gl.finwiz.core.los.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.gl.finwiz.core.model.WfActivityInstanceM;
 import com.gl.finwiz.core.xstream.common.FinWizXML;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -60,7 +61,29 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 
 	private int verson;
 	
+	private String conditionCode;
+	public String getConditionCode() {
+		return conditionCode;
+	}
+
+	public void setConditionCode(String conditionCode) {
+		this.conditionCode = conditionCode;
+	}
+
+	public ParamLosAppStatusM getParamLosAppStatusM() {
+		return paramLosAppStatusM;
+	}
+
+	public void setParamLosAppStatusM(ParamLosAppStatusM paramLosAppStatusM) {
+		this.paramLosAppStatusM = paramLosAppStatusM;
+	}
+
 	private LosCustomerM losCustomerM;
+	
+	private ParamLosAppStatusM paramLosAppStatusM;
+	
+	// for workflow
+	private WfActivityInstanceM wfActivityInstanceM;
 /*
 	//bi-directional many-to-one association to LosApplicationLog
 	@OneToMany(mappedBy="losApplication")
@@ -272,6 +295,14 @@ public class LosApplicationM  extends FinWizXML implements Serializable {
 
 	public void setLosCustomerM(LosCustomerM losCustomerM) {
 		this.losCustomerM = losCustomerM;
+	}
+
+	public WfActivityInstanceM getWfActivityInstanceM() {
+		return wfActivityInstanceM;
+	}
+
+	public void setWfActivityInstanceM(WfActivityInstanceM wfActivityInstanceM) {
+		this.wfActivityInstanceM = wfActivityInstanceM;
 	}
 
 

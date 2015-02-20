@@ -19,7 +19,8 @@ public class FinWizXML implements Serializable {
 	private String serviceName;
     
 	private String firstPage;
-	
+	private String user;
+	private String role;
 	@XStreamAlias("fieldId")
 	private String fieldId;
 	
@@ -145,6 +146,18 @@ public class FinWizXML implements Serializable {
 	}
 	public void setFirstPage(String firstPage) {
 		this.firstPage = firstPage;
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

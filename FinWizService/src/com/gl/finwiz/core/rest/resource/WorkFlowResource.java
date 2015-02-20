@@ -10,6 +10,7 @@ import org.restlet.representation.Representation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.ResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import com.gl.finwiz.core.constant.ServiceConstant;
 import com.gl.finwiz.core.model.WfActivityInstanceM;
@@ -20,6 +21,8 @@ public class WorkFlowResource extends BaseResource {
 	private static final Logger logger = Logger.getLogger(ServiceConstant.LOG_APPENDER);  
 	@Autowired
 	private WFProcessExecutor wfProcessExecutor;
+	@Autowired
+	private ApplicationContext ctx;
 	private com.thoughtworks.xstream.XStream xstream; 
 	public WorkFlowResource() {
 		super();
@@ -41,9 +44,13 @@ public class WorkFlowResource extends BaseResource {
 
 		// TODO Auto-generated method stub
 		logger.debug("into Post ConsultantReportResource 2");
+	
 		InputStream in = null;
 		try {
 			in = entity.getStream();
+			/*PostConExecutor preConExecutor = (PostConExecutor) ctx
+					.getBean("DefaultPostConExecutorImpl");
+				preConExecutor.runPostCondition();*/
 			
 			xstream.processAnnotations(WfActivityInstanceM.class);// or xstream.autodetectAnnotations(true); (Auto-detect  Annotations)
 			WfActivityInstanceM xbpsTerm = new WfActivityInstanceM();
