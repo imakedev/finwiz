@@ -17,7 +17,7 @@
   <%-- 
   <link rel="stylesheet" href="<spring:url value="/styles/petclinic.css" htmlEscape="true" />" type="text/css"/>
    --%> 
-    <title>GL</title>
+    <title><spring:message code="page_title"/></title>
     <link rel="shortcut icon" href="<c:url value="/resources/images/icon.ico" />" type="image/x-icon">
 	<script src="<c:url value="/resources/js/jquery-latest.min.js" />"></script>
 	
@@ -99,10 +99,9 @@
     </script>
 </head> 
    <header class="header clearfix">
-    
     <div class="lang">
-      <a href="#" class="fl"><img src="<c:url value="/resources/images/iconEn.png" />"></a>
-      <a href="#" class="fl"><img src="<c:url value="/resources/images/iconTh.png" />"></a>
+      <a href="?language=th_TH"" class="fl"><img src="<c:url value="/resources/images/iconEn.png" />"></a>
+      <a href="?language=en" class="fl"><img src="<c:url value="/resources/images/iconTh.png" />"></a>
     </div>
 
     <div class="showhidemenu">

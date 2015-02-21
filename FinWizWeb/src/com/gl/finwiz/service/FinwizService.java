@@ -6,6 +6,7 @@
 package com.gl.finwiz.service;
 
 import com.gl.finwiz.core.model.UserLoginM;
+import com.gl.finwiz.core.model.WfActivityInstanceM;
 
 
 
@@ -17,5 +18,6 @@ public interface FinwizService {
 	public abstract int saveOrUpdateMissTodo(MissTodo missTodo);
 	 */
 	public abstract UserLoginM login(UserLoginM userLoginM);
+	public abstract WfActivityInstanceM startWfProcess(WfActivityInstanceM wfActivityInstanceM);
 	
 }
