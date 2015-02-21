@@ -42,7 +42,7 @@ public class LosController {
     	userLogin.setCompanyId(request.getParameter("companyId"));
     	userLogin.setPassword(request.getParameter("password"));
     	userLogin.setStatus(0);
-    	FinWizResultMessage finWizResultMessage = finwizService.login(userLogin);
+    	FinWizResultMessage finWizResultMessage = null;//finwizService.login(userLogin);
     	UserLoginM	 userLoginM = (UserLoginM)finWizResultMessage.getResultListObj().get(0);
 //    	PageM	 pageM = (PageM)finWizResultMessage.getResultListObj().get(0);
     	model.addAttribute("paramPage", userLoginM.getParamPages());
@@ -68,7 +68,7 @@ public class LosController {
 		ParamPageM paramPageM = new ParamPageM();
 		paramPageM.setPageId("5");
 		paramPageM.setRoleId("CHECKER_ROLE");
-		FinWizResultMessage finWizResultMessage = finwizService.tabs(paramPageM);
+		FinWizResultMessage finWizResultMessage = null;//finwizService.tabs(paramPageM);
 		ParamPageM paramPageTabs = (ParamPageM)finWizResultMessage.getResultListObj().get(0);
 		
 		model.addAttribute("tabsPage", paramPageTabs.getPagePath());

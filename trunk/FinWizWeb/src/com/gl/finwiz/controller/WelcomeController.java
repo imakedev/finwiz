@@ -7,6 +7,7 @@ package com.gl.finwiz.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +16,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +28,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 import com.gl.finwiz.core.xstream.common.Paging;
+import com.gl.finwiz.form.validator.FinwizValidator;
+import com.gl.finwiz.model.LosApplicationM;
 import com.gl.finwiz.service.FinwizService;
 
 @Controller 
@@ -31,6 +38,9 @@ public class WelcomeController
 {
 	@Autowired
 	private ApplicationContext ctx;
+	@Autowired
+    @Qualifier("finwizValidator")
+    private Validator validator;
 	private static int PAGE_SIZE=20;
 	 private static String MAIL_SERVER = "";
 	  private static String MAIL_PROTOCAL = "";
@@ -52,6 +62,17 @@ public class WelcomeController
 			MAIL_PERSONAL_NAME=bundle.getString("mail.personal_name");
 			MAIL_TLS=bundle.getString("mail.TLS");*/
 		}
+		 @InitBinder
+		    protected void initBinder(WebDataBinder binder) {
+		        binder.setValidator(new FinwizValidator());
+		 }
+		 @RequestMapping(value={"/save"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
+		    public String doSave(@Valid LosApplicationM losApplicationM, BindingResult bindingResult) {
+			 if (bindingResult.hasErrors()) {
+		            return "form";
+		        }
+			  return "finwiz/index";
+		    }
 	    @RequestMapping(value={"/"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	    public String getNewForm(HttpServletRequest request,HttpServletResponse response,  Model model)
 	    {
