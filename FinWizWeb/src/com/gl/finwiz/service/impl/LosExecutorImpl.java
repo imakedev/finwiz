@@ -4,10 +4,10 @@ import org.springframework.stereotype.Service;
 
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.model.WfActivityInstanceM;
-import com.gl.finwiz.service.FinwizService;
-@Service("losService")
-public class LosService extends PostCommon
-implements FinwizService{
+import com.gl.finwiz.service.FinWizExecutor;
+@Service("losExecutorImpl")
+public class LosExecutorImpl extends PostCommon
+implements FinWizExecutor{
 
 	@Override
 	public UserLoginM login(UserLoginM userLoginM) {

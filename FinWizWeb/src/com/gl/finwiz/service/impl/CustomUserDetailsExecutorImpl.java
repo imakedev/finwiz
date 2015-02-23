@@ -16,23 +16,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gl.finwiz.core.constant.ServiceConstant;
 import com.gl.finwiz.domain.User;
-import com.gl.finwiz.service.FinwizService;
+import com.gl.finwiz.service.FinWizExecutor;
 
 
 /**
  * A custom {@link UserDetailsService} where user information
  * is retrieved from a JPA repository
  */
-@Service
+@Service("customUserDetailsExecutorImpl")
 @Transactional(readOnly = true)
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsExecutorImpl implements UserDetailsService {
 	private static final Logger logger = Logger.getLogger(ServiceConstant.LOG_APPENDER);
 	/* @Autowired
 	private UserRepository userRepository;
 	*/
 	@Autowired
-	@Qualifier("finWizServiceimpl")
-	private FinwizService finwizService;
+	@Qualifier("finWizExecutorImpl")
+	private FinWizExecutor finWizExecutor;
 	/*@PersistenceContext
 	private EntityManager em;*/
 	//@PersistenceUnit(unitName = "hibernatePersistenceUnit")

@@ -7,14 +7,14 @@ import com.gl.finwiz.core.constant.ServiceConstant;
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.model.WfActivityInstanceM;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
-import com.gl.finwiz.service.FinwizService;
+import com.gl.finwiz.service.FinWizExecutor;
 
-@Service("finWizServiceimpl")
-public class FinWizServiceImpl extends PostCommon
-    implements FinwizService
+@Service("finWizExecutorImpl")
+public class FinWizExecutorImpl extends PostCommon
+    implements FinWizExecutor
 {
 
-    public FinWizServiceImpl()
+    public FinWizExecutorImpl()
     {
     }
 

@@ -14,7 +14,6 @@
 
 <filter>
    	 	<filter-name>localizationFilter</filter-name>
-    	<!-- <filter-class>th.co.imake.missconsult.assessment.filter.InternationalizationFilter</filter-class> -->
     	<filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
 	</filter>
   <!-- 
@@ -37,9 +36,11 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!-- 
 	<listener>
     <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
   </listener>
+   -->
 	  <listener>
 	   <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>

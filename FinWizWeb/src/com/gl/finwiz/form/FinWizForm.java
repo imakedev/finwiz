@@ -7,6 +7,9 @@ package com.gl.finwiz.form;
 
 import java.io.Serializable;
 
+import com.gl.finwiz.core.los.model.LosCustomerM;
+import com.gl.finwiz.model.LosApplicationM;
+
 
 // Referenced classes of package th.co.aoe.makedev.missconsult.exam.form:
 //            CommonForm
@@ -14,125 +17,28 @@ import java.io.Serializable;
 public class FinWizForm extends CommonForm
     implements Serializable
 {
-
+	private static final long serialVersionUID = 1L;
+	private LosApplicationM losApplicationM;
+	private LosCustomerM losCustomerM;
     public FinWizForm()
     {
-      //  missCandidate = new MissCandidate();
+      losApplicationM = new LosApplicationM();
+      losCustomerM =new LosCustomerM();
     }
-
-  /*  public MissCandidate getMissCandidate()
-    {
-        return missCandidate;
-    }
-
-    public void setMissCandidate(MissCandidate missCandidate)
-    {
-        this.missCandidate = missCandidate;
-    }*/
-
-    public String getMcaStatus()
-    {
-        return mcaStatus;
-    }
-
-    public void setMcaStatus(String mcaStatus)
-    {
-        this.mcaStatus = mcaStatus;
-    }
-
-    public String getMcaSeries()
-    {
-        return mcaSeries;
-    }
-
-    public void setMcaSeries(String mcaSeries)
-    {
-        this.mcaSeries = mcaSeries;
-    }
-
-    public String getMcaUsername()
-    {
-        return mcaUsername;
-    }
-
-    public void setMcaUsername(String mcaUsername)
-    {
-        this.mcaUsername = mcaUsername;
-    }
-
-    public String getMcaPassword()
-    {
-        return mcaPassword;
-    }
-
-    public void setMcaPassword(String mcaPassword)
-    {
-        this.mcaPassword = mcaPassword;
-    }
-
-    public String getMcaCompanyName()
-    {
-        return mcaCompanyName;
-    }
-
-    public void setMcaCompanyName(String mcaCompanyName)
-    {
-        this.mcaCompanyName = mcaCompanyName;
-    }
-
-    public String getMcaIdArray()
-    {
-        return mcaIdArray;
-    }
-
-    public void setMcaIdArray(String mcaIdArray)
-    {
-        this.mcaIdArray = mcaIdArray;
-    }
-
-    public String getMcaBirthDate()
-    {
-        return mcaBirthDate;
-    }
-
-    public void setMcaBirthDate(String mcaBirthDate)
-    {
-        this.mcaBirthDate = mcaBirthDate;
-    }
-
-    public Long getMaId() {
-		return maId;
+	public LosApplicationM getLosApplicationM() {
+		return losApplicationM;
+	}
+	public void setLosApplicationM(LosApplicationM losApplicationM) {
+		this.losApplicationM = losApplicationM;
+	}
+	public LosCustomerM getLosCustomerM() {
+		return losCustomerM;
+	}
+	public void setLosCustomerM(LosCustomerM losCustomerM) {
+		this.losCustomerM = losCustomerM;
 	}
 
-	public void setMaId(Long maId) {
-		this.maId = maId;
-	}
 
-	private static final long serialVersionUID = 1L;
-    //private MissCandidate missCandidate;
-    private String mcaBirthDate;
-    private String mcaStatus;
-    private String mcaSeries;
-    private String mcaUsername;
-    private String mcaPassword;
-    private String mcaCompanyName;
-    private String mcaFirstName;  
-	private String mcaLastName;
-    private Long maId;
-    private String mcaIdArray;
-	public String getMcaFirstName() {
-		return mcaFirstName;
-	}
 
-	public void setMcaFirstName(String mcaFirstName) {
-		this.mcaFirstName = mcaFirstName;
-	}
-
-	public String getMcaLastName() {
-		return mcaLastName;
-	}
-
-	public void setMcaLastName(String mcaLastName) {
-		this.mcaLastName = mcaLastName;
-	}
+  
 }

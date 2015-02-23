@@ -3,18 +3,16 @@ package com.gl.finwiz.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class LosApplicationM implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	@NotNull
-	@Min(18)
-	private String losAppId;
 
+//	@Min(18)
+	private String losAppId;
+	@NotNull
 	private String applicationId;
 
 	private String applicationStatus;
@@ -22,7 +20,7 @@ public class LosApplicationM implements Serializable {
 	private String approvedBy;
 
 	private Date approvedDate;
-	@Size(min=2, max=30)	
+	//@Size(min=2, max=30)	
 	private String campaignId;
 
 	private String contractNo;

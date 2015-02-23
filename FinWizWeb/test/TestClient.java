@@ -1,18 +1,18 @@
 import com.gl.finwiz.core.model.CacheM;
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.model.WfActivityInstanceM;
-import com.gl.finwiz.service.FinwizService;
-import com.gl.finwiz.service.impl.FinWizServiceImpl;
+import com.gl.finwiz.service.FinWizExecutor;
+import com.gl.finwiz.service.impl.FinWizExecutorImpl;
 import com.thoughtworks.xstream.XStream;
 
 
 public class TestClient {
 	public static void main(String[] args) {
 		TestClient client=new TestClient();
-		FinwizService service =new FinWizServiceImpl();
+		FinWizExecutor service =new FinWizExecutorImpl();
 		client.testWF(service);
 	}
-	public void testWF(FinwizService finwizService){
+	public void testWF(FinWizExecutor finwizService){
 		System.out.println(finwizService);
 		WfActivityInstanceM  wfActivityInstanceM =new WfActivityInstanceM();
 		wfActivityInstanceM.setRefObjectId("0001");
@@ -26,7 +26,7 @@ public class TestClient {
 		
 		//finwizService.nextActivity(wfActivityInstanceM);
 	}
-	public void testCache(FinwizService service){
+	public void testCache(FinWizExecutor service){
 		CacheM cacheM=new CacheM();
 	
 		/*cacheM = service.refreshAll();
@@ -39,7 +39,7 @@ public class TestClient {
 		
 		 System.out.println("list="+va[0]);*/
 	}
-	public void test(FinwizService service){
+	public void test(FinWizExecutor service){
 		
 		
 		UserLoginM userLoginM=new UserLoginM();

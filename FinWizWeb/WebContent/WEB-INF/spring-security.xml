@@ -19,6 +19,7 @@
 		<intercept-url pattern="/logout" access="permitAll"/>
 		<intercept-url pattern="/reportExport/**" access="permitAll"/>
 		<intercept-url pattern="/checksession/**" access="permitAll"/>  
+		<intercept-url pattern="/test/**" access="permitAll"/>  
 		
 		<intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/> 
@@ -28,7 +29,6 @@
 	    
 	    <intercept-url pattern="/reportmanagement/**" access="isAuthenticated()" />	    
 	    <intercept-url pattern="/survey/**" access="isAuthenticated()" />
-	    <intercept-url pattern="/test/**" access="isAuthenticated()" />
 	    <intercept-url pattern="/upload/**" access="isAuthenticated()" />
 	    <intercept-url pattern="/getfile/**" access="isAuthenticated()" />
 	    <intercept-url pattern="/template/**" access="isAuthenticated()" />
@@ -72,7 +72,7 @@
 	</http>
 	
 	<authentication-manager>
-	        <authentication-provider user-service-ref="customUserDetailsService">
+	        <authentication-provider user-service-ref="customUserDetailsExecutorImpl">
 	        		<password-encoder hash="sha-256"/>
 	        </authentication-provider>
 	</authentication-manager>
