@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import com.gl.finwiz.service.FinwizService;
+import com.gl.finwiz.service.FinWizExecutor;
 
 @Controller
 @RequestMapping
 public class AccessController {
 	@Autowired(required=true)
-	@Qualifier("finWizServiceimpl")
-	private FinwizService finwizService;
+	@Qualifier("finWizExecutorImpl")
+	private FinWizExecutor finWizExecutor;
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,HttpServletResponse response,Model model, @RequestParam(required=false) String message) {
 		

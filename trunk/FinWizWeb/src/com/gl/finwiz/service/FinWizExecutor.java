@@ -10,7 +10,7 @@ import com.gl.finwiz.core.model.WfActivityInstanceM;
 
 
 
-public interface FinwizService {
+public interface FinWizExecutor {
 	// public findByUsername;
 	/*public abstract int saveOrUpdateMissTestResult(MissTestResult missTestResult);
 	public abstract int startMissTestResult(MissTestResult missTestResult); 

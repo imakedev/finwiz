@@ -1,36 +1,91 @@
 package com.gl.finwiz.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.LocaleEditor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.gl.finwiz.core.model.ParamPageM;
 import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
-import com.gl.finwiz.service.FinwizService;
+import com.gl.finwiz.form.FinWizForm;
+import com.gl.finwiz.form.validator.FinwizValidateExecutorImpl;
+import com.gl.finwiz.service.FinWizExecutor;
 
 @Controller
 public class LosController {
 	@Autowired
-	@Qualifier("finWizServiceImpl")
-	private FinwizService finwizService;
+	@Qualifier("finWizExecutorImpl")
+	private FinWizExecutor finWizExecutor;
 	@Autowired
 	private ApplicationContext ctx;
 	
+	 @Autowired
+	    @Qualifier("finwizValidateExecutorImpl")
+	    private Validator validator;
+	 @InitBinder
+	    protected void initBinder(WebDataBinder binder) {
+	        binder.setValidator(validator);
+	 }
     @RequestMapping(value={"/"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-    public String getNewForm(HttpServletRequest request,HttpServletResponse response,  Model model)
+    public String getNewForm(HttpServletRequest request,HttpServletResponse response,Locale locale,  Model model)
+    {	
+    	// Start Test
+    	String language=request.getParameter("language");
+    	if(language!=null && language.length()>0){
+    	 LocaleEditor localeEditor = new LocaleEditor();
+         localeEditor.setAsText(language);
+
+         // set the new locale
+         LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+         localeResolver.setLocale(request, response,
+             (Locale) localeEditor.getValue());
+    	}
+    	System.out.println("into test->"+locale);
+    	model.addAttribute("finWizForm",new FinWizForm());
+	 return "test/test";
+    	//End Test
+        // return "finwiz/index";
+    }
+    @RequestMapping(value={"/test/action"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
+    public String action( HttpServletRequest request,@ModelAttribute(value="finWizForm") @Validated FinWizForm finWizForm, BindingResult result, Model model)
     {
+    	System.out.println("into action->"+finWizForm);
+    	 if (result.hasErrors()) {
+    		 System.out.println("into hasErrors->"+result);
+	            return "test/test";
+	        }
+    		model.addAttribute("finWizForm",new FinWizForm());
+    	 //finWizExecutor.saveLosApplication(finWizForm.getLosApplicationM());
+        return "test/test";
+    }
+	
+    @RequestMapping(value={"/xx"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public String getNewxForm(Locale locale,  Model model)
+    {	
+    	// Start Test
     	
-        return "finwiz/index";
+    	System.out.println("into test2->"+locale);
+    	model.addAttribute("finWizForm",new FinWizForm());
+	 return "test/test";
+    	//End Test
+        // return "finwiz/index";
     }
     
 	@RequestMapping(value={"/login"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})

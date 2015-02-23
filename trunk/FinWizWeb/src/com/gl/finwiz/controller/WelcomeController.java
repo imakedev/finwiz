@@ -24,22 +24,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 import com.gl.finwiz.core.xstream.common.Paging;
-import com.gl.finwiz.form.validator.FinwizValidator;
+import com.gl.finwiz.form.FinWizForm;
+import com.gl.finwiz.form.validator.FinwizValidateExecutorImpl;
 import com.gl.finwiz.model.LosApplicationM;
-import com.gl.finwiz.service.FinwizService;
+import com.gl.finwiz.service.FinWizExecutor;
 
 @Controller 
-@SessionAttributes(value={"UserMissContact","welcomeForm"})
 public class WelcomeController
 {
 	@Autowired
 	private ApplicationContext ctx;
 	@Autowired
-    @Qualifier("finwizValidator")
+    @Qualifier("finwizValidateExecutorImpl")
     private Validator validator;
 	private static int PAGE_SIZE=20;
 	 private static String MAIL_SERVER = "";
@@ -64,7 +63,7 @@ public class WelcomeController
 		}
 		 @InitBinder
 		    protected void initBinder(WebDataBinder binder) {
-		        binder.setValidator(new FinwizValidator());
+		        binder.setValidator(new FinwizValidateExecutorImpl());
 		 }
 		 @RequestMapping(value={"/save"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
 		    public String doSave(@Valid LosApplicationM losApplicationM, BindingResult bindingResult) {
@@ -73,17 +72,17 @@ public class WelcomeController
 		        }
 			  return "finwiz/index";
 		    }
-	    @RequestMapping(value={"/"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  /*  @RequestMapping(value={"/"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	    public String getNewForm(HttpServletRequest request,HttpServletResponse response,  Model model)
 	    {
 	    	 System.out.println(ctx);	
-	    	 FinwizService finwizService = (FinwizService) ctx
+	    	 FinWizExecutor finwizService = (FinWizExecutor) ctx
 	 				.getBean("losService");
 	    	 System.out.println(finwizService);	
 	    	String language=request.getParameter("language");
 	        System.out.println("xxx");	
 	        return "finwiz/index";
-	    }
+	    }*/
 	    @RequestMapping(value={"/los_checker_inbox"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	    public String getLos01Form(HttpServletRequest request,HttpServletResponse response,  Model model)
 	    {
@@ -156,6 +155,13 @@ public class WelcomeController
     {
         return "exam/"+page;
     }
+    @RequestMapping(value={"/test"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public String test(HttpServletRequest request,HttpServletResponse response,  Model model,@PathVariable String page)
+    {
+    	System.out.println("into test");
+    	 model.addAttribute("finWizForm",new FinWizForm());
+        return "test/test";
+    }
    
   
   
@@ -182,7 +188,7 @@ public class WelcomeController
    // private static SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
   
     @Autowired
-    @Qualifier("finWizServiceimpl")
-    private FinwizService finwizService;
+    @Qualifier("finWizExecutorImpl")
+    private FinWizExecutor finWizExecutor;
 
 }
