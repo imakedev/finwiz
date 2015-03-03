@@ -5,6 +5,9 @@
 
 package com.gl.finwiz.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.gl.finwiz.core.model.UserLoginM;
 import com.gl.finwiz.core.xstream.common.FinWizResultMessage;
 import com.gl.finwiz.core.xstream.common.Paging;
 import com.gl.finwiz.form.FinWizForm;
@@ -36,12 +40,15 @@ import com.gl.finwiz.service.FinWizExecutor;
 public class WelcomeController
 {
 	@Autowired
+	@Qualifier("finWizServiceImpl")
+	private FinwizService finwizService;
+	@Autowired
 	private ApplicationContext ctx;
 	@Autowired
     @Qualifier("finwizValidateExecutorImpl")
     private Validator validator;
 	private static int PAGE_SIZE=20;
-	 private static String MAIL_SERVER = "";
+	  private static String MAIL_SERVER = "";
 	  private static String MAIL_PROTOCAL = "";
 	  private static String MAIL_PORT="";
 	  private static String MAIL_USE_AUTHEN="";
@@ -190,5 +197,6 @@ public class WelcomeController
     @Autowired
     @Qualifier("finWizExecutorImpl")
     private FinWizExecutor finWizExecutor;
+
 
 }
