@@ -67,44 +67,30 @@
         <a href="#">
           <img src="<c:url value="/resources/images/logo_login.png" />">
         </a>
-        <form action="login" method="POST">
+        <form:form action="loginForm" modelAttribute="userLoginForm" method="POST">
           <h1>Login Form</h1>
-          
-
+          <form:hidden path="userLoginM.countryId" value="th" />
+          <form:hidden path="userLoginM.status" value="0" />
           <div>
-					<%--<form:select path="userId">
-					   <form:option value="CHECKER" label="CHECKER" />
-					   <form:option value="INPUTDATA" label="INPUT DATA" />
-					   <form:option value="UNDERWRITING" label="UNDERWRITING" />
-					   <form:option value="MANAGER" label="CHMANAGERCKER" />
-					   <form:option value="CO" label="CONTRACT OPERATION" />
-					   <form:option value="MANAGER2" label="MANAGER 2" />
-					</form:select> --%>
-					<select id="userId" name="userId" class="select">
-					   <option value="checker">CHECKER</option>
-					   <option value="de">INPUT DATA</option>
-					   <option value="underwriting">UNDERWRITING</option>
-					   <option value="manager">MANAGER</option>
-					   <%--<option value="CO">CONTRACT OPERATION</option>
-					   <option value="MANAGER2">MANAGER 2</option>--%>
-					</select>
-					
+					<form:select path="userLoginM.userId" cssClass="select">
+						<form:option value="checker">CHECKER</form:option>
+						<form:option value="de">INPUT DATA</form:option>
+						<form:option value="underwriter">UNDERWRITER</form:option>
+						<form:option value="manager">MANAGER</form:option>
+					</form:select>
           </div>
           <div>
-          <input id="password" name="password" value="password" type="password" style="width: 340px">
+          <form:input path="userLoginM.password" type="password" value="password" style="width: 340px"/>
           </div>
           <div>
-          			<%--<form:select path="companyId">
-					   <form:option value="gl" label="Group Lease" />
-		 			</form:select> --%>
-		 			<select id="companyId" name="companyId" class="select">
-					   <option value="gl">Group Lease</option>
-					</select>
+					<form:select path="userLoginM.companyId" cssClass="select">
+						<form:option value="gl">Group Lease</form:option>
+					</form:select>
           </div>
           <div>
             <input type="submit" class="fl" value="Log In" name="submit" />
           </div>
-</form>
+</form:form>
         <!-- form -->
         
         <div class="button">
