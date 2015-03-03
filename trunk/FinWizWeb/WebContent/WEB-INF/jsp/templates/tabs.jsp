@@ -1,13 +1,21 @@
 		<div class="tablecontainerrow"></div>
 		
 			<div id='tab-container'>
+			<c:forEach items="${paramTabs}" var="paramTabsM" varStatus="loop"> 
 					  <div class="tab-content" style="padding:10px;">
+						<h1 class="tab" title="">${paramTabsM.getTabPath()}</h1>
+						
+						<jsp:include page="/WEB-INF/jsp/finwiz/los/tabs/${paramTabsM.getTabPath()}.jsp" />
+					  </div>
+			</c:forEach> 
+					<%--  <!-- //end tab-content-->
+					  
+				 	  <div class="tab-content" style="padding:10px;">
 						<h1 class="tab" title="">Loan request</h1>
 						<%@ include file="/WEB-INF/jsp/finwiz/los/tabs/loan_request.jsp" %>
 					  </div>
-					  <!-- //end tab-content-->
 					  
-					  <div class="tab-content" style="padding:10px;">
+					 <div class="tab-content" style="padding:10px;">
 						<h1 class="tab" title="">Customer information</h1>
 						<%@ include file="/WEB-INF/jsp/finwiz/los/tabs/customer_information.jsp" %>
 					  </div>
@@ -23,7 +31,7 @@
 						<h1 class="tab" title="">Analysis</h1>
 					   <%@ include file="/WEB-INF/jsp/finwiz/los/tabs/analysis.jsp" %>
 					  </div>
-					  <!-- //end tab-content-->
+					  <!-- //end tab-content-->--%>
 				</div>
 				<!-- //end tab-container-->
 		

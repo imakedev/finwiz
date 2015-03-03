@@ -120,7 +120,7 @@
 
     <ul class="datahead">
       <li>
-        <div class="val">11545 Checker</div>
+        <div class="val">11545 <c:out value="${userId}"/></div>
         <dev class="des">User ID</dev>
         
       </li>
@@ -149,7 +149,7 @@
         <div class="val">BK001</div>
         <dev class="des" style="width:80px;">Device Code </dev>
       </li>
-
     </ul>
+
   </header>
   <body>
