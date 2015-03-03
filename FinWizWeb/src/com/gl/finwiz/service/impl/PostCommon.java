@@ -27,9 +27,11 @@ public class PostCommon {
 	public FinWizResultMessage postMessage(FinWizXML vserviceXML,@SuppressWarnings("rawtypes") Class[] className,String endPoint,boolean isReturn) {
 		//HttpPost httppost = new HttpPost(ServiceConstant.hostReference+endPoint); 
 		//HttpPost httppost = new HttpPost("http://localhost:3003/v1/"+endPoint);
-		//HttpPost httppost = new HttpPost("http://192.168.1.199:3000/v1/"+endPoint);
+//		HttpPost httppost = new HttpPost("http://192.168.1.199:3000/v1/"+endPoint);
+		
+		//HttpPost httppost = new HttpPost("http://192.168.1.118:3000/v1/"+endPoint);
 		 HttpPost httppost = new HttpPost("http://localhost:3000/v1/"+endPoint);
-		 //HttpPost httppost = new HttpPost("http://localhost:8080/FinWizService/rest/"+endPoint);
+		 
 		//HttpPost httppost = new HttpPost("http://localhost:8080/MISSExamServices/rest/"+endPoint);
 				
 				//HttpPost httppost = new HttpPost("http://10.0.20.27:3000/v1/"+endPoint);
