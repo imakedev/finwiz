@@ -7,6 +7,8 @@ package com.gl.finwiz.form;
 
 import java.io.Serializable;
 
+import com.gl.finwiz.model.LosApplicationM;
+
 
 // Referenced classes of package th.co.aoe.makedev.missconsult.exam.form:
 //            CommonForm
@@ -14,8 +16,16 @@ import java.io.Serializable;
 public class FinWizForm extends CommonForm
     implements Serializable
 {
+ private LosApplicationM losApplicationM;
+    public LosApplicationM getLosApplicationM() {
+	return losApplicationM;
+}
 
-    public FinWizForm()
+public void setLosApplicationM(LosApplicationM losApplicationM) {
+	this.losApplicationM = losApplicationM;
+}
+
+	public FinWizForm()
     {
       //  missCandidate = new MissCandidate();
     }
