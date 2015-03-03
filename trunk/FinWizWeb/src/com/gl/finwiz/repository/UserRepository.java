@@ -2,7 +2,7 @@ package com.gl.finwiz.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gl.finwiz.domain.User;
+import com.gl.finwiz.model.User;
 
 
 //public interface UserRepository extends JpaRepository<User, Long> {
