@@ -64,92 +64,70 @@
         }
         
         
+        /* end */
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        div#tablecontainer-tabs
-        {
-            width: 100%;
-        }
-
-        div.tablecontainerrow-tabs
-        {
-            clear:both;
-        }
-        
-        div#tablecontainer-tabs div div.column-tabsA
-        {
-            width: 100%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-        
-         div#tablecontainer-tabs div div.column-tabsB
-        {
-            width: 100%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-
-        div#tablecontainer-tabs div div.column-tabs1
-        {
-            width: 45%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-
-        div#tablecontainer-tabs div div.column-tabs2
-        {
-            width: 15%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-        
-        div#tablecontainer-tabs div div.column-tabs3
-        {
-            width: 35%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-        
-        div#tablecontainer-tabs div div.column-tabs1-1
-        {
-            width: 45%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-
-        div#tablecontainer-tabs div div.column-tabs2-2
-        {
-            width: 15%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
-        
-        div#tablecontainer-tabs div div.column-tabs3-3
-        {
-            width: 35%;
-            float:left;
-            border: 1px solid black;
-            background-color:#fff;            
-        }
+        .tableTabs
+    {
+		width: 100%;
+        display: table;
+    }
+	.rowTabs
+    {
+		width: 50%;
+        display: table-row;
+    }
+    .cellTabs
+    {
+        display: table-cell;
+        border: 0px solid black;
+    }
+	.tableTabsLeft
+    {
+		width: 100%;
+        display: table;
+    }
+	.rowTabsLeft
+    {
+        display: table-row;
+    }
+	.cellTabsLeft-1
+    {
+		width: 25%;
+        display: table-cell;
+        border: 0px solid black;
+    }
+	.cellTabsLeft-2
+    {
+		width: 75%;
+        display: table-cell;
+        border: 0px solid black;
+    }
+	.tableTabsRight
+    {
+		width: 100%;
+        display: table;
+    }
+	.rowTabsRight
+    {
+        display: table-row;
+    }
+	.cellTabsRight-1
+    {
+		width: 30%;
+        display: table-cell;
+        border: 0px solid black;
+    }
+	.cellTabsRight-2
+    {
+		width: 70%;
+        display: table-cell;
+        border: 0px solid black;
+    }
+    div#tablecontainer div div.columnBtn3
+    {
+        width: 100%;
+        float:left;
+        border: 0px solid black;
+        background-color:#fff;            
+		text-align: right;
+     }
