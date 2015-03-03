@@ -19,9 +19,26 @@ function checkIdCard(){
 <%@ include file="/WEB-INF/jsp/templates/sidebar.jsp" %>
 <!-- end sidebar -->
 <!-- start maincontent -->
+<form:form action="applicationForm" modelAttribute="applicationForm" method="POST">
 	<div id="main-content">
 		 <div class="wrapperdetail">
-		<h2>Apply no: PRE-TH-A000001</h2>
+		<h2>Apply no: PRE-TH-A000001
+		
+		<form:hidden path="actions"/>
+		<form:hidden path="losApplicationM.applicationId"/>
+		<form:hidden path="losApplicationM.losAppId"/>
+		<form:hidden path="losApplicationM.conditionCode"/>
+		<form:hidden path="losApplicationM.updatedBy" value="${userId}"/>
+		<form:hidden path="wfActivityInstanceM.activityId"/>
+		<form:hidden path="wfActivityInstanceM.applicationStatus" value="0001"/>
+		<form:hidden path="wfActivityInstanceM.wfActivityInstanceId"/>
+		<form:hidden path="wfActivityInstanceM.wfpiId"/>
+		<form:hidden path="wfActivityInstanceM.refObjectId"/>
+		<form:hidden path="wfActivityInstanceM.wfpId" value="WFP0001"/>
+		<form:hidden path="wfActivityInstanceM.wfActivityInstanceOwnerUser" value="${userId}"/>
+        <form:hidden path="wfActivityInstanceM.wfActivityInstanceOwnerRole" value="${userRolesId}"/> 
+        <form:hidden path="wfActivityInstanceM.finId" value="THGL0000000001"/>    	
+		</h2>
 <!-- start content-box -->
 		 <div class="content-box">
 <!-- start content-box-content -->
@@ -36,98 +53,28 @@ function checkIdCard(){
     <!--end content-box -->
     <div class="content-box">
     <div class="content-box-content">
+<%@ include file="/WEB-INF/jsp/templates/buttons.jsp" %>
 		<div id="tablecontainer">
 			<div class="tablecontainerrow">
 				<div class="column1">
-					<label class="labelright"><span class="red">*</span> ID type :</label>
+					<label class="labelright"><span class="red">*</span> ID Dealer :</label>
 				</div>
 				<div class="column2">
-					<select name="select9" class="textinput">
-					<option selected>ID card</option>
-					<option>ID passport</option>
-					</select>
-					<input name="idcode" type="text" id="idcode">
-					<button class="btn btn-default btn-sm" id="checkidprofile" onclick="checkIdCard();">Check</button>
-					<span id="resultCheckIdCard"></span>
-				</div>
-				<div class="column3-colspan">
-					<input type="button" value="CANCEL" class="btn btn-default">
-					<input type="button" value="SAVE AS DRAFT" class="btn btn-warning" id="savedraft2" onClick="">
-					<input type="button" value="Submit" class="greenbtn">
+					<form:input type="text" path="losApplicationM.dealerId"/>
 				</div>
 				<div class="clear" /></div>
 			</div>
-			
-			<div class="tablecontainerrow">
-				<div class="column1">
-					<label class="labelright"><span class="red">*</span> Prefix :</label>
-				</div>
-				<div class="column2">
-					<select class="textinput">
-					<option selected>...</option>
-					<option>Mr.</option>
-					<option>Mrs.</option>
-					<option>Miss</option>
-					</select>
-				</div>
-
-				<div class="clear" /></div>
 			</div>
-
-			<div class="tablecontainerrow">
-				<div class="column1">
-					<label class="labelright"><span class="red">*</span> First Name :</label>
-				</div>
-				<div class="column2">
-					<input name="txtFirstName" type="text" id="txtFirstName">
-				</div>
-				<div class="clear" /></div>
-			</div>
-
-			<div class="tablecontainerrow">
-				<div class="column1">
-					<label class="labelright">Middle Name :</label>
-				</div>
-				<div class="column2">
-					<input name="txtMiddleName" type="text" id="txtMiddleName">
-				</div>
-				<div class="clear" /></div>
-			</div>
-
-			<div class="tablecontainerrow">
-				<div class="column1">
-					<label class="labelright"><span class="red">*</span> Last Name :</label>
-				</div>
-				<div class="column2">
-					<input name="txtLastName" type="text" id="txtLastName">
-				</div>
-				<div class="clear" /></div>
-			</div>
-
-			<div class="tablecontainerrow">
-				<div class="column1">
-					<label class="labelright">Customer ID :</label>
-				</div>
-				<div class="column2">
-					<input type="text" class="readonlyFormColor" value="TH-A000001" readonly>
-				</div>
-				<div class="column3">
-					<div class="subcolumn3-1">
-						<label class="labelright">Contract No :</label>
-					</div>
-					<div class="subcolumn3-2">
-						<input type="text" class="readonlyFormColor" value="" readonly>
-					</div>
-				</div>
-				<div class="clear" /></div>
-			</div>
-			</div></div>
+<%@ include file="/WEB-INF/jsp/templates/subforms.jsp" %>
+	</div>
 			
 		<%@ include file="/WEB-INF/jsp/templates/tabs.jsp" %>
 			</div>
 		<!-- // end main-content -->
 		</div>
 	</div>
+	</form:form>
 </div>
+
 <%@ include file="/WEB-INF/jsp/templates/footer.jsp" %>
 <!-- end body -->
